@@ -1,11 +1,9 @@
 package com.fumigaciones_ica_sac.fumigaciones.controllers;
 
 import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.Usuario;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,8 +25,26 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<Usuario> getUsuarios() {
+    public List<Usuario> consultar() {
         return usuarioRepository.findAll();
+    }
+
+    @PostMapping
+    public void registrar(@RequestBody Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
+    @PutMapping
+    @Transactional
+    public void modificar(@RequestBody Usuario usuario) {
+        Usuario usuarioModificacion = usuarioRepository.getReferenceById(usuario.getId());
+        usuarioModificacion.actualizar(usuario);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+        Usuario usuario = usuarioRepository.getReferenceById(id);
+        usuarioRepository.delete(usuario);
     }
 
 }

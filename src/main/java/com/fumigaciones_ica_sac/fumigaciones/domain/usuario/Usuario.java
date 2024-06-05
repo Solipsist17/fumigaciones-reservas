@@ -16,5 +16,17 @@ public class Usuario {
     private String nombre;
     private String clave;
     @Column(name = "estado")
-    private boolean estado;
+    private Boolean estado;
+
+    public void actualizar(Usuario usuario) {
+        if (usuario.getNombre() != null) {
+            this.nombre = usuario.getNombre();
+        }
+        if (usuario.getClave() != null) {
+            this.clave = usuario.getClave();
+        }
+        if (usuario.getEstado() != null) {
+            this.estado = usuario.getEstado();
+        }
+    }
 }

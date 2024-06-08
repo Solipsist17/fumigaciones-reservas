@@ -1,6 +1,8 @@
 package com.fumigaciones_ica_sac.fumigaciones.controllers;
 
 import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.Usuario;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +13,7 @@ import java.util.List;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-    UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
     @Autowired
     public UsuarioController(UsuarioRepository usuarioRepository) {
@@ -25,12 +27,20 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<Usuario> consultar() {
+    public List<Usuario> consultar(/*@RequestHeader(value = "Authorization") String token*/) {
+        /*String usuarioId = jwtUtil.getKey(token);
+        if (usuarioId == null) {
+            return new ArrayList<>();
+        }*/
+
         return usuarioRepository.findAll();
     }
 
     @PostMapping
     public void registrar(@RequestBody Usuario usuario) {
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String claveHashed = argon2.hash(1, 1024, 1, usuario.getClave());
+        usuario.setClave(claveHashed);
         usuarioRepository.save(usuario);
     }
 

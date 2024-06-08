@@ -8,10 +8,7 @@ async function cargarUsuarios() {
     // llamada a la API
     const request = await fetch('usuarios', {
         method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
     });
     const usuarios = await request.json();
 
@@ -37,12 +34,18 @@ async function eliminarUsuario(id) {
     // llamada a la API
     const request = await fetch('usuarios/' + id, {
         method: 'DELETE',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
     });
 
     //location.reload(); // recargar la página
     cargarUsuarios(); // cargar datos
+}
+
+// Enviar el token en cada request
+function getHeaders() {
+    return {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.token
+    }
 }

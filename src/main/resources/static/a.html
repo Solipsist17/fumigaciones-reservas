@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A</title>
+</head>
+<body>
+<div id="contenido">
+lorem ipsum
+</div>
+
+<script>
+    /*
+    document.addEventListener("DOMContentLoaded", () => {
+        var token = localStorage.getItem('token');
+        if (!token) {
+            alert('No tiene acceso a esta página. Inicie sesión nuevamente.');
+            window.location.href = '/login.html'; // Redirigir al formulario de login si no hay token
+            return;
+        }
+
+        console.log('Token:', token);
+
+        // construir el header
+        var headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + token); // Asegurarse de que el formato sea correcto
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
+
+        // configurar la solicitud HTTP
+        var requestOptions = {
+            method: 'POST',
+            headers: headers
+        };
+
+        // hacer la solicitud http
+        fetch('http://localhost:8080/login/validate-token', requestOptions)
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else if (response.status === 401) {
+                    throw new Error('No autorizado');
+                } else if (response.status === 403) {
+                    throw new Error('Acceso prohibido');
+                } else {
+                    throw new Error('Error en la solicitud: ' + response.statusText);
+                }
+            })
+            .then(html => {
+                console.log(html); // Verificar la respuesta HTML
+                //document.getElementById('contenido').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error al cargar la página protegida:', error);
+                alert('No tiene acceso a esta página. Inicie sesión nuevamente.');
+                window.location.href = '/login.html'; // Redirigir al formulario de login
+            });
+    });
+    */
+    /*
+    autenticar();
+
+    async function autenticar() {
+        var token = localStorage.getItem('token');
+
+        // llamada a la API
+        const request = await fetch('http://localhost:8080/login/validate-token', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        });
+        const response = await request.text();
+        console.log(response);
+
+        if (response != 'OK') {
+            window.location.href = 'login.html';
+            alert('Las credenciales son incorrectas. Por favor intente nuevamente');
+        }
+    }
+    */
+
+    // VALIDAR TOKEN
+    autenticar();
+    setInterval(autenticar, 300000); // cada 5 minutos valida el token
+
+    function autenticar() {
+        var token = localStorage.getItem('token');
+        if (!token) {
+            alert('No tiene acceso a esta página. Inicie sesión nuevamente.');
+            window.location.href = '/login.html'; // Redirigir al formulario de login si no hay token
+        }
+
+        console.log('Token:', token);
+
+        // construir el header
+        var headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + token); // Asegurarse de que el formato sea correcto
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
+
+        // configurar la solicitud HTTP
+        var requestOptions = {
+            method: 'POST',
+            headers: headers
+        };
+
+        // hacer la solicitud http
+        fetch('http://localhost:8080/login/validate-token', requestOptions)
+            .then(response => {
+               if (response.ok) {
+                  return response.text();
+               } else if (response.status === 401) {
+                  throw new Error('No autorizado');
+               } else if (response.status === 403) {
+                  throw new Error('Acceso prohibido');
+               } else {
+                  throw new Error('Error en la solicitud: ' + response.statusText);
+               }
+            })
+            /*
+            .then(html => {
+               console.log(html); // Verificar la respuesta HTML
+               if (response != 'OK') {
+                    window.location.href = 'login.html';
+                    alert('Las credenciales son incorrectas. Por favor intente nuevamente');
+               }
+            })*/
+            .catch(error => {
+               console.error('Error al cargar la página protegida:', error);
+               alert('No tiene acceso a esta página. Inicie sesión nuevamente.');
+               window.location.href = '/login.html'; // Redirigir al formulario de login
+            });
+    }
+</script>
+
+
+</body>
+</html>

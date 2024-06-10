@@ -1,6 +1,6 @@
 package com.fumigaciones_ica_sac.fumigaciones.infra.security;
 
-import com.fumigaciones_ica_sac.fumigaciones.controllers.UsuarioRepository;
+import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

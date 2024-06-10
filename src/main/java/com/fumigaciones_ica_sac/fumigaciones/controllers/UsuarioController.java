@@ -1,6 +1,7 @@
 package com.fumigaciones_ica_sac.fumigaciones.controllers;
 
 import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.Usuario;
+import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.UsuarioRepository;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import jakarta.transaction.Transactional;
@@ -38,6 +39,7 @@ public class UsuarioController {
 
     @PostMapping
     public void registrar(@RequestBody Usuario usuario) {
+        // CAMBIAR POR BCRYPT ALGORITHM //////////////////////////////////////////////
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
         String claveHashed = argon2.hash(1, 1024, 1, usuario.getClave());
         usuario.setClave(claveHashed);

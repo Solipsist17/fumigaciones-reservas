@@ -1,6 +1,6 @@
 package com.fumigaciones_ica_sac.fumigaciones.infra.security;
 
-import com.fumigaciones_ica_sac.fumigaciones.controllers.UsuarioRepository;
+import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,7 +36,6 @@ public class SecurityFilter extends OncePerRequestFilter {
         System.out.println("AuthHeader: " + authHeader);
         if (authHeader != null) {
             var token = authHeader.replace("Bearer ", "");
-            System.out.println(token);
             System.out.println(token);
             // verificamos si es válido
             var nombreUsuario = tokenService.getSubject(token);

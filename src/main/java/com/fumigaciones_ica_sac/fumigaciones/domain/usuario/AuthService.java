@@ -1,12 +1,7 @@
 package com.fumigaciones_ica_sac.fumigaciones.domain.usuario;
 
-import com.fumigaciones_ica_sac.fumigaciones.controllers.UsuarioRepository;
-import de.mkammerer.argon2.Argon2;
-import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class AuthService {

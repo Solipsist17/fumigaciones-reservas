@@ -18,7 +18,7 @@ async function cargarUsuarios() {
     let usuariosHTML = '';
     for (let usuario of usuarios) {
         let btnEliminar = '<a href="#" onclick="eliminarUsuario('+usuario.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
-        let usuarioHTML = '<tr><td>'+usuario.id+'</td><td>'+usuario.nombre+'</td><td>'+usuario.estado+'</td><td>'+btnEliminar+'</td></tr>';
+        let usuarioHTML = '<tr><td>'+usuario.id+'</td><td>'+usuario.nombre+'</td><td>'+usuario.activo+'</td><td>'+btnEliminar+'</td></tr>';
         usuariosHTML += usuarioHTML;
     }
 

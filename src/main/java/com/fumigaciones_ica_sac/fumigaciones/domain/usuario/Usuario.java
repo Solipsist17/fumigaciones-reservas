@@ -22,8 +22,8 @@ public class Usuario implements UserDetails {
     private Long id;
     private String nombre;
     private String clave;
-    @Column(name = "estado")
-    private Boolean estado;
+    @Column(name = "activo")
+    private Boolean activo;
 
     public Usuario(Long id) {
         this.id = id;
@@ -36,8 +36,8 @@ public class Usuario implements UserDetails {
         if (usuario.getClave() != null) {
             this.clave = usuario.getClave();
         }
-        if (usuario.getEstado() != null) {
-            this.estado = usuario.getEstado();
+        if (usuario.getActivo() != null) {
+            this.activo = usuario.getActivo();
         }
     }
 
@@ -73,6 +73,6 @@ public class Usuario implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return activo;
     }
 }

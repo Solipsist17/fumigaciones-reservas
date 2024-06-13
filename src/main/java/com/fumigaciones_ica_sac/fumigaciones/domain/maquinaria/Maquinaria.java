@@ -1,14 +1,12 @@
 package com.fumigaciones_ica_sac.fumigaciones.domain.maquinaria;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity(name = "Maquinaria")
 @Table(name = "maquinarias")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")

@@ -11279,3 +11279,37 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+/* El contenedor de la ventana emergente (oculto por defecto) */
+.modal {
+    display: flex;
+    /*position: fixed;*/
+    z-index: 1;
+    margin-top-bottom: 20%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Contenido de la ventana emergente */
+.modal-content {
+    background-color: #fefefe;
+    margin: 20px;
+    padding: 20px;
+    border: 30px solid #888;
+}
+
+/* El botón para cerrar la ventana emergente */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

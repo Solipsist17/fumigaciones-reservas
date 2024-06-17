@@ -145,6 +145,13 @@
             <span>Charts</span></a>
     </li>-->
 
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="usuarios.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Usuarios</span></a>
+        </li>
+
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="servicios.html">
@@ -154,16 +161,24 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="tareas.html">
+            <a class="nav-link" href="maquinarias.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Tareas</span></a>
+                <span>Maquinarias</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="tecnicos.html">
+            <a class="nav-link" href="plagas.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Tecnicos</span></a>
+                <span>Plagas</span></a>
+        </li>
+
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="productos.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Productos</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
@@ -408,32 +423,7 @@
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Tabla de maquinaria</h6>
 
-                        <!-- Botón para abrir la ventana emergente -->
-                        <button id="openModalBtn">Añadir</button>
-                    </div>
 
-                    <!-- Contenido de la ventana emergente -->
-                    <div id="myModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <form>
-                                <!-- Campo de entrada para el nombre -->
-                                <label for="name">Nombre:</label><br>
-                                <input type="text" id="name" name="name" required><br><br>
-
-                                <label for="name">Cantidad:</label><br>
-                                <input type="number" id="quantity" name="name" required><br><br>
-
-                                <label>Active:</label><br>
-                                <input type="checkbox" id="sports" name="interests" value="sports">
-
-                                <!-- Botón de envío -->
-                                <input type="submit" value="Agregar">
-                            </form>
-
-                        </div>
-                    </div>
-                    <!-- Fin de pop up-->
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="maquinariastable" width="100%" cellspacing="0">

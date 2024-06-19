@@ -17,6 +17,19 @@ async function cargarDatosMaquinaria(id){
 
 }
 
+function mostrarEditarMaquinaria(id) {
+    const request = await fetch('maquinarias/' + id, {
+                id: maquinarias.id,
+                method: 'GET',
+                headers: getHeaders()
+            });
+            const maquinarias = await request.json();
+
+            console.log(maquinarias);
+            maquinarias.id;
+
+}
+
 // Enviar el token en cada request
 function getHeaders() {
     return {

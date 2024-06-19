@@ -4,6 +4,7 @@ import com.fumigaciones_ica_sac.fumigaciones.domain.maquinaria.Maquinaria;
 import com.fumigaciones_ica_sac.fumigaciones.domain.maquinaria.MaquinariaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +28,13 @@ public class MaquinariaController {
     @GetMapping
     public List<Maquinaria> consultar() {
         return maquinariaRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Maquinaria> consultarPorId(@PathVariable Long id) {
+        return maquinariaRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping

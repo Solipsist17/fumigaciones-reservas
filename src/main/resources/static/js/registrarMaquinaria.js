@@ -26,9 +26,10 @@ async function registrarMaquinarias() {
     // agregar maquinaria a la tabla
 
 }
-async function editarMaquinaria(id){
+async function editarMaquinaria(){
 
     let datos = {};
+        datos.id = id;
         datos.nombre= document.getElementById('txtnombre').value;
         datos.cantidad= document.getElementById('txtcantidad').value;
         datos.activo= document.getElementById('txtactivo').value;

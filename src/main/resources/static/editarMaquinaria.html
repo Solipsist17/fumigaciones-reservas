@@ -117,6 +117,34 @@
             GESTION
         </div>
 
+        <!-- Nav Item - Pages Collapse Menu -->
+        <!--<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Pages</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Login Screens:</h6>
+                    <a class="collapse-item" href="login.html">Login</a>
+                    <a class="collapse-item" href="register.html">Register</a>
+                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                    <div class="collapse-divider"></div>
+                    <h6 class="collapse-header">Other Pages:</h6>
+                    <a class="collapse-item" href="404.html">404 Page</a>
+                    <a class="collapse-item" href="blank.html">Blank Page</a>
+                </div>
+            </div>
+        </li>-->
+
+        <!-- Nav Item - Charts -->
+        <!--<li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Charts</span></a>
+    </li>-->
+
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="usuarios.html">
@@ -387,62 +415,43 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Gestión de Productos</h1>
-                <p class="mb-4">Aquí podrá ver la lista de todos los productos y realizar las acciones correspondientes.</p>
+                <form >
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="txtnombre" name="nombre">
+                    <br>
 
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Tabla de Plagas</h6>
+                    <label for="nombre">Cantidad:</label>
+                    <input type="number" id="txtcantidad" name="cantidad">
+                    <br>
 
-                    </div>
+                    <label for="activo">Activo:</label>
+                    <select id="activo" name="txtactivo" required>
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
 
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="plagastable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Activo</th>
-                                <th>Acciones</th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Activo</th>
-                                <th>Acciones</th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
+                    <a href="#" onclick="editarMaquinaria()" class="btn btn-success btn-circle btn-lng">
+                        <i class="fas fa-check"></i></a>
+                </form>
 
+            </div>
+            <!-- /.container-fluid -->
 
-                            </tbody>
-                        </table>
-                    </div>
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2020</span>
                 </div>
             </div>
-
-        </div>
-        <!-- /.container-fluid -->
+        </footer>
+        <!-- End of Footer -->
 
     </div>
-    <!-- End of Main Content -->
-
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2020</span>
-            </div>
-        </div>
-    </footer>
-    <!-- End of Footer -->
-
-</div>
-<!-- End of Content Wrapper -->
+    <!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->
@@ -473,8 +482,7 @@
 </div>
 
 
-<!-- Pop up js -->
-<script src="js/popup.js"></script>
+<script src="js/registrarMaquinaria.js"></script>
 
 <!-- Validar token -->
 <script src="js/validar-token.js"></script>
@@ -497,7 +505,7 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/demo/plagastable.js"></script>
+<script src="js/demo/maquinariastable.js"></script>
 
 </body>
 

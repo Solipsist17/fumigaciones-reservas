@@ -41,6 +41,8 @@ public class SecurityConfig {
                         .requestMatchers("/productos.html").permitAll()
                         .requestMatchers("/plagas.html").permitAll()
                         .requestMatchers("/maquinarias.html").permitAll()
+                        .requestMatchers("/editarMaquinaria.html").permitAll()
+                        .requestMatchers("/agregarMaquinaria.html").permitAll()
                         .requestMatchers("/index.html").permitAll()
                         .requestMatchers("/a.html").permitAll()
                         .requestMatchers("/assets/**", "/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**").permitAll()

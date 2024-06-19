@@ -7,7 +7,7 @@ $(document).ready(function() {
 async function cargarMaquinarias() {
 
     // llamada a la API
-        const request = await fetch('maquinarias', { //checar si es pagina o tabla maquinaria
+        const request = await fetch('maquinarias', {
             method: 'GET',
             headers: getHeaders()
         });
@@ -18,8 +18,9 @@ async function cargarMaquinarias() {
     // agregar los datos
         let maquinariasHTML = '';
         for (let maquinaria of maquinarias) {
+            let btnEditar = '<a href="../editarMaquinaria.html" onclick="mostrarEditarMaquinaria('+maquinaria.id+')" class="btn btn-warning btn-circle"><i class="fas fa-exclamation-triangle"></i></a>';
             let btnEliminar = '<a href="#" onclick="eliminarMaquinaria('+maquinaria.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
-            let maquinariaHTML = '<tr><td>'+maquinaria.id+'</td><td>'+maquinaria.nombre+'</td><td>'+maquinaria.cantidad+'</td><td>'+maquinaria.activo+'</td><td>'+btnEliminar+'</td></tr>';
+            let maquinariaHTML = '<tr><td>'+maquinaria.id+'</td><td>'+maquinaria.nombre+'</td><td>'+maquinaria.cantidad+'</td><td>'+maquinaria.activo+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
             maquinariasHTML += maquinariaHTML;
         }
 

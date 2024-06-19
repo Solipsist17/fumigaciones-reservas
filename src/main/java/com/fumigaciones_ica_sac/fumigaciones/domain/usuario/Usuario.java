@@ -1,5 +1,6 @@
 package com.fumigaciones_ica_sac.fumigaciones.domain.usuario;
 
+import com.fumigaciones_ica_sac.fumigaciones.domain.reserva.ActualizarUsuarioDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,15 +30,15 @@ public class Usuario implements UserDetails {
         this.id = id;
     }
 
-    public void actualizar(Usuario usuario) {
-        if (usuario.getNombre() != null) {
-            this.nombre = usuario.getNombre();
+    public void actualizar(ActualizarUsuarioDTO usuarioDTO) {
+        if (usuarioDTO.nombre() != null) {
+            this.nombre = usuarioDTO.nombre();
         }
-        if (usuario.getClave() != null) {
-            this.clave = usuario.getClave();
+        if (usuarioDTO.clave() != null) {
+            this.clave = usuarioDTO.clave();
         }
-        if (usuario.getActivo() != null) {
-            this.activo = usuario.getActivo();
+        if (usuarioDTO.activo() != null) {
+            this.activo = usuarioDTO.activo();
         }
     }
 

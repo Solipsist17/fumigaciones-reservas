@@ -1,13 +1,20 @@
 package com.fumigaciones_ica_sac.fumigaciones.controllers;
 
+import com.fumigaciones_ica_sac.fumigaciones.domain.reserva.ActualizarUsuarioDTO;
+import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.RegisterUsuarioDTO;
+import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.RespuestaUsuarioDTO;
 import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.Usuario;
 import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.UsuarioRepository;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -28,35 +35,49 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<Usuario> consultar(/*@RequestHeader(value = "Authorization") String token*/) {
-        /*String usuarioId = jwtUtil.getKey(token);
-        if (usuarioId == null) {
-            return new ArrayList<>();
-        }*/
-
+    public List<Usuario> consultar() {
         return usuarioRepository.findAll();
     }
 
     @PostMapping
-    public void registrar(@RequestBody Usuario usuario) {
-        // CAMBIAR POR BCRYPT ALGORITHM //////////////////////////////////////////////
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-        String claveHashed = argon2.hash(1, 1024, 1, usuario.getClave());
-        usuario.setClave(claveHashed);
-        usuarioRepository.save(usuario);
+    public ResponseEntity<RespuestaUsuarioDTO> registrarUsuario(@RequestBody RegisterUsuarioDTO registerUsuarioDTO, UriComponentsBuilder uriComponentsBuilder) {
+        String rawPasssword = registerUsuarioDTO.clave();
+        String encodedPassword = encoderPassword(rawPasssword);
+
+        System.out.println("Clave: " + rawPasssword);
+        System.out.println("Clave hasheada: " + encodedPassword);
+
+        Usuario usuario = new Usuario(null, registerUsuarioDTO.nombre(), encodedPassword, registerUsuarioDTO.activo());
+        usuario = usuarioRepository.save(usuario);
+
+        URI uri = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(usuario.getId()).toUri();
+        return ResponseEntity.created(uri).body(new RespuestaUsuarioDTO(usuario));
     }
 
     @PutMapping
     @Transactional
-    public void modificar(@RequestBody Usuario usuario) {
-        Usuario usuarioModificacion = usuarioRepository.getReferenceById(usuario.getId());
-        usuarioModificacion.actualizar(usuario);
+    public ResponseEntity<RespuestaUsuarioDTO> modificar(@RequestBody ActualizarUsuarioDTO actualizarUsuarioDTO) {
+        Usuario usuarioModificacion = usuarioRepository.getReferenceById(actualizarUsuarioDTO.id());
+
+        String encodedPassword = encoderPassword(actualizarUsuarioDTO.clave());
+
+        usuarioModificacion.actualizar(actualizarUsuarioDTO);
+        usuarioModificacion.setClave(encodedPassword);
+
+        return ResponseEntity.ok(new RespuestaUsuarioDTO(usuarioModificacion));
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
+    @Transactional
+    public ResponseEntity<RespuestaUsuarioDTO> eliminar(@PathVariable Long id) {
         Usuario usuario = usuarioRepository.getReferenceById(id);
-        usuarioRepository.delete(usuario);
+        usuario.setActivo(Boolean.FALSE);
+        //usuarioRepository.delete(usuario);
+        return ResponseEntity.noContent().build();
     }
 
+    public String encoderPassword(String rawPasssword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.encode(rawPasssword);
+    }
 }

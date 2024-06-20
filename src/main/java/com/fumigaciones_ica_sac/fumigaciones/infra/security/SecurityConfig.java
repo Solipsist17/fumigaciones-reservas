@@ -48,6 +48,7 @@ public class SecurityConfig {
                         .requestMatchers("/agregarProducto.html").permitAll()
                         .requestMatchers("/editarProducto.html").permitAll()
                         .requestMatchers("/registrarPlaga.html").permitAll()
+                        .requestMatchers("/editarPlaga.html").permitAll()
                         .requestMatchers("/index.html").permitAll()
                         .requestMatchers("/a.html").permitAll()
                         .requestMatchers("/assets/**", "/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**").permitAll()

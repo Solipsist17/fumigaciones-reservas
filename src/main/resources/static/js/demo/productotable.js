@@ -43,9 +43,9 @@ async function cargarDatosProducto(id){
 
         const collectionJSON = JSON.stringify(productos);
 
-        //localStorage.setItem('productoC',collectionJSON);
+        localStorage.setItem('productoC',collectionJSON);
 
-        //console.log(localStorage.getItem('productoC'));
+        console.log(localStorage.getItem('productoC'));
 }
 
 async function eliminarProducto(id) {

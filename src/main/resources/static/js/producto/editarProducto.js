@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    mostrarEditarProducto();
-    $('#formEditar').html('');
+
+
 
 });
 
@@ -18,7 +18,7 @@ $(document).ready(function() {
             document.getElementById("txtnombre").value = coleccion.nombre;
             document.getElementById("txtcantidad").value = coleccion.cantidad;
             document.getElementById("txtactivo").value = coleccion.activo;
-            document.getElementById("txtdescricpcion").value = coleccion.descricpcion;
+            document.getElementById("txtdescripcion").value = coleccion.descripcion;
 
 }
 
@@ -29,6 +29,7 @@ async function editarProducto(){
         datos.nombre= document.getElementById('txtnombre').value;
         datos.cantidad= document.getElementById('txtcantidad').value;
         datos.activo= document.getElementById('txtactivo').value;
+        datos.descripcion =document.getElementById("txtdescripcion").value;
     // llamada a la API
         const request = await fetch('productos' , {
             method: 'PUT',

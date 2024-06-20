@@ -117,6 +117,34 @@
             GESTION
         </div>
 
+        <!-- Nav Item - Pages Collapse Menu -->
+        <!--<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Pages</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Login Screens:</h6>
+                    <a class="collapse-item" href="login.html">Login</a>
+                    <a class="collapse-item" href="register.html">Register</a>
+                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                    <div class="collapse-divider"></div>
+                    <h6 class="collapse-header">Other Pages:</h6>
+                    <a class="collapse-item" href="404.html">404 Page</a>
+                    <a class="collapse-item" href="blank.html">Blank Page</a>
+                </div>
+            </div>
+        </li>-->
+
+        <!-- Nav Item - Charts -->
+        <!--<li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Charts</span></a>
+    </li>-->
+
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="usuarios.html">
@@ -133,9 +161,9 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="maquinarias.html">
+            <a class="nav-link" href="productos.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Maquinarias</span></a>
+                <span>Productos</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
@@ -387,68 +415,56 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Gestión de Productos</h1>
-                <p class="mb-4">Aquí podrá ver la lista de todos los productos y realizar las acciones correspondientes.</p>
+                <form id="formEditar">
 
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Tabla de Productos</h6>
+                    <input type="hidden" id="txtid">
 
 
-                    </div>
-                    <a href="agregarProducto.html" class="btn btn-success btn-circle btn-lng">
-                        <i class="fas fa-plus"></i></a>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="productostable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Cantidad</th>
-                                <th>Activo</th>
-                                <th>Descripcion</th>
-                                <th>Acciones</th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Cantidad</th>
-                                <th>Activo</th>
-                                <th>Descripcion</th>
-                                <th>Acciones</th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
+                    <label>Nombre:</label>
+                    <input type="text" id="txtnombre" name="nombre">
+                    <br>
 
+                    <label>Cantidad:</label>
+                    <input type="number" id="txtcantidad" name="cantidad">
+                    <br>
 
-                            </tbody>
-                        </table>
-                    </div>
+                    <label>Activo:</label>
+                    <select id="txtactivo" name="activo" required>
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+                    <br>
+                    <label>Descripcion:</label>
+                    <input type="text" id="txtdescripcion" name="descripcion">
+                    <br>
+                    <label>Cargar datos anteriores:</label>
+                    <a href="#" onclick="mostrarEditarProducto()" class="btn btn-secondary btn-circle btn-lng"><i class="fa fa-repeat"></i></a>
+                    <br>
+
+                    <label>Confirmar</label>
+                    <a href="#" onclick="editarProducto()" class="btn btn-success btn-circle btn-lng">
+                        <i class="fas fa-check"></i></a>
+
+                </form>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2020</span>
                 </div>
             </div>
-
-        </div>
-        <!-- /.container-fluid -->
+        </footer>
+        <!-- End of Footer -->
 
     </div>
-    <!-- End of Main Content -->
-
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2020</span>
-            </div>
-        </div>
-    </footer>
-    <!-- End of Footer -->
-
-</div>
-<!-- End of Content Wrapper -->
+    <!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->
@@ -479,7 +495,7 @@
 </div>
 
 
-
+<script src="js/producto/editarProducto.js"></script>
 
 <!-- Validar token -->
 <script src="js/validar-token.js"></script>
@@ -501,8 +517,7 @@
 <script src="vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="js/demo/productotable.js"></script>
+
 
 </body>
 

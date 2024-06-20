@@ -1,14 +1,14 @@
 $(document).ready(function() {
-    mostrarEditarMaquinaria();
+    mostrarEditarProducto();
     $('#formEditar').html('');
 
 });
 
 
 
- async function mostrarEditarMaquinaria() {
+ async function mostrarEditarProducto() {
 
-    let valor = localStorage.getItem('maquinariaC');
+    let valor = localStorage.getItem('productoC');
 
     let coleccion = JSON.parse(valor);
 
@@ -18,10 +18,11 @@ $(document).ready(function() {
             document.getElementById("txtnombre").value = coleccion.nombre;
             document.getElementById("txtcantidad").value = coleccion.cantidad;
             document.getElementById("txtactivo").value = coleccion.activo;
+            document.getElementById("txtdescricpcion").value = coleccion.descricpcion;
 
 }
 
-async function editarMaquinaria(){
+async function editarProducto(){
 
     let datos = {};
         datos.id = document.getElementById('txtid').value;
@@ -29,14 +30,14 @@ async function editarMaquinaria(){
         datos.cantidad= document.getElementById('txtcantidad').value;
         datos.activo= document.getElementById('txtactivo').value;
     // llamada a la API
-        const request = await fetch('maquinarias' , {
+        const request = await fetch('productos' , {
             method: 'PUT',
             headers: getHeaders(),
             body:JSON.stringify(datos)
         });
-         const maquinarias = await request.json();
+         const productos = await request.json();
 
-         console.log(maquinarias);
+         console.log(productos);
 
 }
 // Enviar el token en cada request

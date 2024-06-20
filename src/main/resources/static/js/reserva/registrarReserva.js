@@ -3,7 +3,7 @@ $(document).ready(function() {
 //ON READY
 });
 
-async function registrarMaquinarias() {
+async function registrarReserva() {
 
     let datos = {};
     datos.nombre= document.getElementById('txtnombre').value;
@@ -11,19 +11,19 @@ async function registrarMaquinarias() {
     datos.activo= document.getElementById('txtactivo').value;
 
     // llamada a la API
-        const request = await fetch('maquinarias', {
+        const request = await fetch('reservas', {
             method: 'POST',
             headers: getHeaders(),
             body:JSON.stringify(datos)
         });
-        const maquinarias = await request.json();
+        const reservas = await request.json();
 
-        console.log(maquinarias);
+        console.log(reservas);
 
     // agregar los datos
 
 
-    // agregar maquinaria a la tabla
+    // agregar reserva a la tabla
 
 }
 

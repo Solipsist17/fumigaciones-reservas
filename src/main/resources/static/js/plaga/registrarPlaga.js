@@ -3,27 +3,26 @@ $(document).ready(function() {
 //ON READY
 });
 
-async function registrarMaquinarias() {
+async function registrarPlagas() {
 
     let datos = {};
     datos.nombre= document.getElementById('txtnombre').value;
-    datos.cantidad= document.getElementById('txtcantidad').value;
     datos.activo= document.getElementById('txtactivo').value;
 
     // llamada a la API
-        const request = await fetch('maquinarias', {
+        const request = await fetch('plagas', {
             method: 'POST',
             headers: getHeaders(),
             body:JSON.stringify(datos)
         });
-        const maquinarias = await request.json();
+        const plagas = await request.json();
 
-        console.log(maquinarias);
+        console.log(plagas);
 
     // agregar los datos
 
 
-    // agregar maquinaria a la tabla
+    // agregar plaga a la tabla
 
 }
 

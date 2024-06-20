@@ -415,23 +415,34 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <form >
-                    <label for="nombre">Nombre:</label>
+                <form id="formEditar">
+
+                    <input type="hidden" id="txtid">
+
+
+                    <label>Nombre:</label>
                     <input type="text" id="txtnombre" name="nombre">
                     <br>
 
-                    <label for="nombre">Cantidad:</label>
+                    <label>Cantidad:</label>
                     <input type="number" id="txtcantidad" name="cantidad">
                     <br>
 
-                    <label for="activo">Activo:</label>
-                    <select id="activo" name="txtactivo" required>
+                    <label>Activo:</label>
+                    <select id="txtactivo" name="activo" required>
                         <option value="true">Sí</option>
                         <option value="false">No</option>
                     </select>
+                    <br>
 
+                    <label>Cargar datos anteriores:</label>
+                    <a href="#" onclick="mostrarEditarMaquinaria()" class="btn btn-secondary btn-circle btn-lng"><i class="fa fa-repeat"></i></a>
+                    <br>
+
+                    <label>Confirmar</label>
                     <a href="#" onclick="editarMaquinaria()" class="btn btn-success btn-circle btn-lng">
                         <i class="fas fa-check"></i></a>
+
                 </form>
 
             </div>
@@ -482,7 +493,7 @@
 </div>
 
 
-<script src="js/registrarMaquinaria.js"></script>
+<script src="js/editarMaquinaria.js"></script>
 
 <!-- Validar token -->
 <script src="js/validar-token.js"></script>
@@ -504,8 +515,7 @@
 <script src="vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="js/demo/maquinariastable.js"></script>
+
 
 </body>
 

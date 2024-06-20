@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/reservas")
@@ -38,6 +39,18 @@ public class ReservaController {
     public ResponseEntity<Page<ListadoReservaDTO>> listar(@PageableDefault(size=10, page=0, sort = "id") Pageable paginacion) {
         return ResponseEntity.ok(reservaRepository.findAll(paginacion)
                 .map(reserva -> new ListadoReservaDTO(reserva))); // code 200
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<RespuestaReservaDTO> consultarPorId(@PathVariable Long id) {
+        Optional<Reserva> reservaOptional = reservaRepository.findById(id);
+        if (reservaOptional.isPresent()) {
+            Reserva reserva = reservaOptional.get();
+            RespuestaReservaDTO reservaDTO = new RespuestaReservaDTO(reserva);
+            return ResponseEntity.ok(reservaDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping

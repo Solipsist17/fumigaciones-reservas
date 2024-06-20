@@ -2,8 +2,10 @@ package com.fumigaciones_ica_sac.fumigaciones.controllers;
 
 import com.fumigaciones_ica_sac.fumigaciones.domain.plaga.Plaga;
 import com.fumigaciones_ica_sac.fumigaciones.domain.plaga.PlagaRepository;
+import com.fumigaciones_ica_sac.fumigaciones.domain.producto.Producto;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +29,13 @@ public class PlagaController {
     @GetMapping
     public List<Plaga> consultar() {
         return plagaRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Plaga> consultarPorId(@PathVariable Long id) {
+        return plagaRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping

@@ -5,8 +5,6 @@ import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.RegisterUsuarioDTO;
 import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.RespuestaUsuarioDTO;
 import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.Usuario;
 import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.UsuarioRepository;
-import de.mkammerer.argon2.Argon2;
-import de.mkammerer.argon2.Argon2Factory;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,15 +26,16 @@ public class UsuarioController {
         this.usuarioRepository = usuarioRepository;
     }
 
-    //@RequestMapping(value = "usuario/{id}")
-    @GetMapping("/{id}")
-    public Usuario getUsuario(@PathVariable Long id) {
-        return new Usuario(id,"user","123",true);
-    }
-
     @GetMapping
     public List<Usuario> consultar() {
         return usuarioRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> consultarPorId(@PathVariable Long id) {
+        return usuarioRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping

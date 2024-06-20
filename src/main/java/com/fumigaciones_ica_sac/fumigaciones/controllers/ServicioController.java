@@ -1,6 +1,7 @@
 package com.fumigaciones_ica_sac.fumigaciones.controllers;
 
 import com.fumigaciones_ica_sac.fumigaciones.domain.servicio.*;
+import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.Usuario;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/servicios")
@@ -38,6 +40,18 @@ public class ServicioController {
     public ResponseEntity<Page<ListadoServicioDTO>> listar(@PageableDefault(size=10, page=0, sort = "id")Pageable paginacion) {
         return ResponseEntity.ok(servicioRepository.findAll(paginacion)
                 .map(servicio -> new ListadoServicioDTO(servicio))); // code 200
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<RespuestaServicioDTO> consultarPorId(@PathVariable Long id) {
+        Optional<Servicio> servicioOptional = servicioRepository.findById(id);
+        if (servicioOptional.isPresent()) {
+            Servicio servicio = servicioOptional.get();
+            RespuestaServicioDTO servicioDTO = new RespuestaServicioDTO(servicio);
+            return ResponseEntity.ok(servicioDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping

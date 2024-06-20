@@ -1,7 +1,6 @@
 package com.fumigaciones_ica_sac.fumigaciones.controllers;
 
 import com.fumigaciones_ica_sac.fumigaciones.domain.factura.*;
-import com.fumigaciones_ica_sac.fumigaciones.domain.reserva.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/facturas")
@@ -38,6 +38,18 @@ public class FacturaController {
     public ResponseEntity<Page<ListadoFacturaDTO>> listar(@PageableDefault(size=10, page=0, sort = "id") Pageable paginacion) {
         return ResponseEntity.ok(facturaRepository.findAll(paginacion)
                 .map(factura -> new ListadoFacturaDTO(factura))); // code 200
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<RespuestaFacturaDTO> consultarPorId(@PathVariable Long id) {
+        Optional<Factura> facturaOptional = facturaRepository.findById(id);
+        if (facturaOptional.isPresent()) {
+            Factura factura = facturaOptional.get();
+            RespuestaFacturaDTO facturaDTO = new RespuestaFacturaDTO(factura);
+            return ResponseEntity.ok(facturaDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping

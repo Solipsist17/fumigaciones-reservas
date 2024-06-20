@@ -18,7 +18,7 @@ async function cargarMaquinarias() {
     // agregar los datos
         let maquinariasHTML = '';
         for (let maquinaria of maquinarias) {
-            let btnEditar = '<a href="../editarMaquinaria.html" onclick="cargarDatosMaquinaria('+maquinaria.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pencil"></i></a>';
+            let btnEditar = '<a href="../editarMaquinaria.html" onclick="cargarDatosMaquinaria('+maquinaria.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
             let btnEliminar = '<a href="#" onclick="eliminarMaquinaria('+maquinaria.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
             let maquinariaHTML = '<tr><td>'+maquinaria.id+'</td><td>'+maquinaria.nombre+'</td><td>'+maquinaria.cantidad+'</td><td>'+maquinaria.activo+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
             maquinariasHTML += maquinariaHTML;

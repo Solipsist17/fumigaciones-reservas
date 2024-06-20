@@ -18,7 +18,7 @@ async function cargarProductos() {
     // agregar los datos
         let productosHTML = '';
         for (let producto of productos) {
-            let btnEditar = '<a href="../editarProducto.html" onclick="cargarDatosProducto('+producto.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pencil"></i></a>';
+            let btnEditar = '<a href="../editarProducto.html" onclick="cargarDatosProducto('+producto.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
             let btnEliminar = '<a href="#" onclick="eliminarProducto('+producto.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
             let productoHTML = '<tr><td>'+producto.id+'</td><td>'+producto.nombre+'</td><td>'+producto.cantidad+'</td><td>'+producto.activo+'</td><td>'+producto.descripcion+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
             productosHTML += productoHTML;

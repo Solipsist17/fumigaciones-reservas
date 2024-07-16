@@ -1,6 +1,7 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
 //ON READY
+mostrarEditarProducto();
 });
 
 async function registrarProductos() {
@@ -28,7 +29,10 @@ async function registrarProductos() {
 
 }
 
-
+ async function mostrarEditarProducto() {
+    const nombre = localStorage.nombre;
+    document.querySelector('#nombreUsuario').outerHTML = nombre;
+}
 
 
 

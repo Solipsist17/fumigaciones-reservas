@@ -195,7 +195,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><div id="nombreUsuario"></div></span>
                             <img class="img-profile rounded-circle"
                                  src="img/undraw_profile.svg">
                         </a>
@@ -224,8 +224,8 @@
                 <p class="mb-4">Aquí podrá ver la lista de todos las maquinas y realizar las acciones correspondientes.</p>
 
                 <br>
-                <p class="mb-4">Agregar:    <a href="registrarPlaga.html" class="btn btn-success btn-circle btn-lng">
-                    <i class="fas fa-plus"></i></a></p>
+                <p class="mb-4"><a href="registrarPlaga.html" class="btn btn-success btn-lng">
+                    <i class="fas fa-plus"></i> Agregar</a></p>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -241,7 +241,8 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Activo</th>
-                                <th>Acciones</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -249,7 +250,8 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Activo</th>
-                                <th>Acciones</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -309,8 +311,7 @@
 </div>
 
 
-<!-- Pop up js -->
-<script src="js/popup.js"></script>
+
 
 <!-- Validar token -->
 <script src="js/validar-token.js"></script>

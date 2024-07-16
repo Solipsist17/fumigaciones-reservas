@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -217,17 +218,25 @@
 
                 <!-- Topbar Search -->
 
+                <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><div id="nombreUsuario"></div></span>
                             <img class="img-profile rounded-circle"
                                  src="img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
-
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="principal.html" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
                     </li>
 
                 </ul>
@@ -237,34 +246,63 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
+                <h2>Agregar Producto</h2>
+                <br>
+                <hr>
                 <!-- Page Heading -->
                 <form id="formEditar">
 
                     <input type="hidden" id="txtid">
 
 
-                    <label>Nombre:</label>
-                    <input type="text" id="txtnombre" name="nombre">
-                    <br>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nombre:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtnombre" name="nombre" class="form-control">
+                        </div>
+                    </div>
 
-                    <label>Cantidad:</label>
-                    <input type="number" id="txtcantidad" name="cantidad">
-                    <br>
 
-                    <label>Activo:</label>
-                    <select id="txtactivo" name="activo" required>
-                        <option value="true">Sí</option>
-                        <option value="false">No</option>
-                    </select>
-                    <br>
-                    <label>Descripcion:</label>
-                    <input type="text" id="txtdescripcion" name="descripcion">
-                    <br>
 
-                    <label>Confirmar</label>
-                    <a href="#" onclick="registrarProductos()" class="btn btn-success btn-circle btn-lng">
-                        <i class="fas fa-check"></i></a>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Cantidad:</label>
+                        <div class="col-sm-10">
+                            <input type="number" id="txtcantidad" name="cantidad" class="form-control">
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Activo:</label>
+                        <div class="col-sm-10">
+                            <select id="txtactivo" name="activo" class="form-control form-control-sm">
+                                <option value="true">Sí</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Descripcion:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtdescripcion" name="descripcion" class="form-control">
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-row align-items-center">
+                        <div class="col-auto">
+                            <a href="#" onclick="registrarProductos()" class="btn btn-success mb-2"><i class="fas fa-check"></i> Agregar</a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="productos.html"  class="btn btn-secondary mb-2"><i class="fa fa-arrow-left"></i> Volver</a>
+                        </div>
+                    </div>
+
 
                 </form>
 

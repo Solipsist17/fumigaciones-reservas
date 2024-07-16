@@ -1,22 +1,25 @@
-$(document).ready(function() {
+
+    $(document).ready(function() {
+    mostrarEditarPlaga();
+
+    });
 
 
-});
 
-
-
- async function mostrarEditarPlaga() {
+async function mostrarEditarPlaga() {
 
     let valor = localStorage.getItem('plagaC');
 
     let coleccion = JSON.parse(valor);
+    const nombre = localStorage.nombre;
+    console.log(nombre);
+    console.log(coleccion);
 
-    console.log(coleccion.id);
+    document.getElementById("txtid").value = coleccion.id;
+    document.getElementById("txtnombre").value = coleccion.nombre;
+    document.getElementById("txtactivo").value = coleccion.activo;
 
-            document.getElementById("txtid").value = coleccion.id;
-            document.getElementById("txtnombre").value = coleccion.nombre;
-            document.getElementById("txtactivo").value = coleccion.activo;
-
+    document.querySelector('#nombreUsuario').outerHTML = nombre;
 }
 
 async function editarPlaga(){
@@ -35,6 +38,11 @@ async function editarPlaga(){
 
          console.log(plagas);
 
+}
+
+async function regresarTabla(){
+
+    localStorage.removeItem('plagaC');
 }
 // Enviar el token en cada request
 function getHeaders() {

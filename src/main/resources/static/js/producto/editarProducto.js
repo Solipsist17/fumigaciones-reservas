@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-
+mostrarEditarProducto();
 
 });
 
@@ -11,6 +11,7 @@ $(document).ready(function() {
     let valor = localStorage.getItem('productoC');
 
     let coleccion = JSON.parse(valor);
+    const nombre = localStorage.nombre;
 
     console.log(coleccion.id);
 
@@ -19,6 +20,8 @@ $(document).ready(function() {
             document.getElementById("txtcantidad").value = coleccion.cantidad;
             document.getElementById("txtactivo").value = coleccion.activo;
             document.getElementById("txtdescripcion").value = coleccion.descripcion;
+
+            document.querySelector('#nombreUsuario').outerHTML = nombre;
 
 }
 

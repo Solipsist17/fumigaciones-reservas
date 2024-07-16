@@ -12,20 +12,21 @@ async function cargarProductos() {
             headers: getHeaders()
         });
         const productos = await request.json();
-
+        const nombre = localStorage.nombre;
         console.log(productos);
 //../editarproducto.html
     // agregar los datos
         let productosHTML = '';
         for (let producto of productos) {
-            let btnEditar = '<a href="../editarProducto.html" onclick="cargarDatosProducto('+producto.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
-            let btnEliminar = '<a href="#" onclick="eliminarProducto('+producto.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
-            let productoHTML = '<tr><td>'+producto.id+'</td><td>'+producto.nombre+'</td><td>'+producto.cantidad+'</td><td>'+producto.activo+'</td><td>'+producto.descripcion+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
+            let btnEditar = '<a href="../editarProducto.html" onclick="cargarDatosProducto('+producto.id+')" class="btn btn-warning"><i class="fa fa-pen"></i> Editar</a>';
+            let btnEliminar = '<a href="#" onclick="eliminarProducto('+producto.id+')" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</a>';
+            let productoHTML = '<tr><td>'+producto.id+'</td><td>'+producto.nombre+'</td><td>'+producto.cantidad+'</td><td>'+producto.activo+'</td><td>'+producto.descripcion+'</td><td>'+btnEditar+'</td><td>'+btnEliminar+'</td></tr>';
             productosHTML += productoHTML;
         }
 
     // agregar producto a la tabla
         document.querySelector('#productostable tbody').outerHTML = productosHTML;
+        document.querySelector('#nombreUsuario').outerHTML = nombre;
         // DOM Javascript
 }
 

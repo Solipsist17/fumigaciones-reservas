@@ -12,20 +12,21 @@ async function cargarMaquinarias() {
             headers: getHeaders()
         });
         const maquinarias = await request.json();
-
+        const nombre = localStorage.nombre;
         console.log(maquinarias);
 //../editarMaquinaria.html
     // agregar los datos
         let maquinariasHTML = '';
         for (let maquinaria of maquinarias) {
-            let btnEditar = '<a href="../editarMaquinaria.html" onclick="cargarDatosMaquinaria('+maquinaria.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
-            let btnEliminar = '<a href="#" onclick="eliminarMaquinaria('+maquinaria.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
-            let maquinariaHTML = '<tr><td>'+maquinaria.id+'</td><td>'+maquinaria.nombre+'</td><td>'+maquinaria.cantidad+'</td><td>'+maquinaria.activo+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
+            let btnEditar = '<a href="../editarMaquinaria.html" onclick="cargarDatosMaquinaria('+maquinaria.id+')" class="btn btn-warning"><i class="fa fa-pen"></i> Editar</a>';
+            let btnEliminar = '<a href="#" onclick="eliminarMaquinaria('+maquinaria.id+')" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</a>';
+            let maquinariaHTML = '<tr><td>'+maquinaria.id+'</td><td>'+maquinaria.nombre+'</td><td>'+maquinaria.cantidad+'</td><td>'+maquinaria.activo+'</td><td>'+btnEditar+'</td><td>'+btnEliminar+'</td></tr>';
             maquinariasHTML += maquinariaHTML;
         }
 
     // agregar maquinaria a la tabla
         document.querySelector('#maquinariastable tbody').outerHTML = maquinariasHTML;
+        document.querySelector('#nombreUsuario').outerHTML = nombre;
         // DOM Javascript
 }
 

@@ -168,7 +168,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="plagas.html">
+            <a class="nav-link" href="servicios.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Plagas</span></a>
         </li>
@@ -379,7 +379,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><div id="nombreUsuario"></div></span>
                             <img class="img-profile rounded-circle"
                                  src="img/undraw_profile.svg">
                         </a>
@@ -413,39 +413,102 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <h2>Registrar Plaga</h2>
+
+                <h2>Editar Servicio</h2>
                 <br>
                 <hr>
                 <!-- Page Heading -->
-                <form >
+                <form id="formEditar">
+
+                    <input type="hidden" id="txtid">
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Maquinaria :</label>
+                        <div id="selectmaquinaria">
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Plaga :</label>
+                        <div id="selectplaga">
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Producto :</label>
+                        <div id="selectproducto">
+
+                        </div>
+                    </div>
+
+
+
+
+
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nombre:</label>
                         <div class="col-sm-10">
-                            <input type="text" id="txtnombre" name="nombre" class="form-control" placeholder="Ingrese el nombre">
+                            <input type="text" id="txtnombre" name="nombre" class="form-control">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Cantidad Maquinaria:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtcantidadmaquinaria" name="nombre" class="form-control">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Cantidad Producto:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtcantidadproducto" name="nombre" class="form-control">
+                        </div>
+                        </div>
+
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Precio Hora:</label>
+                        <div class="col-sm-10">
+                            <input type="number" id="txtpreciohora" name="nombre" class="form-control">
+                        </div>
+                         </div>
+
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Descripcion:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtdescripcion" name="nombre" class="form-control">
                         </div>
 
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Activo:</label>
-                        <div class="col-sm-10">
-                            <select id="txtactivo" name="activo" class="form-control form-control-sm">
-                                <option value="true">Sí</option>
-                                <option value="false">No</option>
-                            </select>
-                        </div>
-
+                        <a href="#" onclick="mostrarEditarServicio()" class="btn btn-secondary mb-2">Cargar datos anteriores</a>
                     </div>
+
                     <hr>
                     <div class="form-row align-items-center">
                         <div class="col-auto">
-                            <a href="#" onclick="registrarPlagas()" class="btn btn-success mb-2">
-                                <i class="fas fa-check"></i> Agregar</a>
+                            <a href="#" onclick="editarServicio()" class="btn btn-success mb-2">
+                                <i class="fas fa-check"></i> Confirmar</a>
                         </div>
+
                         <div class="col-auto">
-                            <a href="plagas.html" onclick="regresarTabla()" class="btn btn-secondary mb-2"><i class="fa fa-arrow-left"></i> Volver</a>
+                            <a href="servicios.html" onclick="regresarTabla()" class="btn btn-secondary mb-2"><i class="fa fa-arrow-left"></i> Volver</a>
                         </div>
                     </div>
+
 
 
                 </form>
@@ -499,7 +562,7 @@
 
 
 
-<script src="js/registrarMaquinaria.js"></script>
+
 <!-- Validar token -->
 <script src="js/validar-token.js"></script>
 
@@ -521,7 +584,7 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/plaga/registrarPlaga.js"></script>
+<script src="js/servicio/editarServicio.js"></script>
 
 </body>
 

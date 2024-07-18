@@ -18,15 +18,17 @@ async function cargarPlagas() {
     // agregar los datos
     let plagasHTML = '';
     for (let plaga of plagas) {
-<<<<<<< HEAD
+//<<<<<<< HEAD
+/*
         let btnEditar = '<a href="../app/editarPlaga.html" onclick="cargarDatosPlaga('+plaga.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
         let btnEliminar = '<a href="#" onclick="eliminarPlaga('+plaga.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
         let plagaHTML = '<tr><td>'+plaga.id+'</td><td>'+plaga.nombre+'</td><td>'+plaga.activo+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
-=======
-        let btnEditar = '<a href="../editarPlaga.html" onclick="cargarDatosPlaga('+plaga.id+')" class="btn btn-warning"><i class="fa fa-pen"></i> Editar</a>';
+*/
+//=======
+        let btnEditar = '<a href="../app/editarPlaga.html" onclick="cargarDatosPlaga('+plaga.id+')" class="btn btn-warning"><i class="fa fa-pen"></i> Editar</a>';
         let btnEliminar = '<a href="#" onclick="eliminarPlaga('+plaga.id+')" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</a>';
         let plagaHTML = '<tr><td>'+plaga.id+'</td><td>'+plaga.nombre+'</td><td>'+plaga.activo+'</td><td>'+btnEditar+'</td><td>'+btnEliminar+'</td></tr>';
->>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821
+//>>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821
         plagasHTML += plagaHTML;
     }
 

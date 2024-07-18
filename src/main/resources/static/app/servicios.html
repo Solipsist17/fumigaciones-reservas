@@ -37,7 +37,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../app/index.html">
 
             <div class="sidebar-brand-text mx-3">Admin</div>
         </a>
@@ -47,7 +47,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="../index.html">
+            <a class="nav-link" href="../app/index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -75,40 +75,6 @@
         </li>
         <!-- Nav Item - Pages Collapse Menu -->
 
-        <!-- <li class="nav-item">
-             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                 aria-expanded="true" aria-controls="collapseTwo">
-                 <i class="fas fa-fw fa-cog"></i>
-                 <span>Components</span>
-             </a>
-             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                 <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">Custom Components:</h6>
-                     <a class="collapse-item" href="buttons.html">Buttons</a>
-                     <a class="collapse-item" href="cards.html">Cards</a>
-                 </div>
-             </div>
-         </li>-->
-
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <!-- <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                  aria-expanded="true" aria-controls="collapseUtilities">
-                  <i class="fas fa-fw fa-wrench"></i>
-                  <span>Utilities</span>
-              </a>
-              <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                  data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Custom Utilities:</h6>
-                      <a class="collapse-item" href="utilities-color.html">Colors</a>
-                      <a class="collapse-item" href="utilities-border.html">Borders</a>
-                      <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                      <a class="collapse-item" href="utilities-other.html">Other</a>
-                  </div>
-              </div>
-          </li>-->
-
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -117,47 +83,55 @@
             GESTION
         </div>
 
+        <!-- Nav Item - Pages Collapse Menu -->
+
         <!-- Nav Item - Tables -->
-        <li class="nav-item">
+        <li class="nav-item" id="navUsuarios">
             <a class="nav-link" href="usuarios.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Usuarios</span></a>
         </li>
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item">
+        <li class="nav-item" id="navServicios">
             <a class="nav-link" href="servicios.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Servicios</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
-        <li class="nav-item">
+        <li class="nav-item" id="navMaquinarias">
             <a class="nav-link" href="maquinarias.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Maquinarias</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
-        <li class="nav-item">
+        <li class="nav-item" id="navPlagas">
             <a class="nav-link" href="plagas.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Plagas</span></a>
         </li>
 
-
         <!-- Nav Item - Tables -->
-        <li class="nav-item">
+        <li class="nav-item" id="navProductos">
             <a class="nav-link" href="productos.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Productos</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="facturacion_y_pagos.html">
+        <li class="nav-item" id="navReservas">
+            <a class="nav-link" href="reservas.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Facturacion y Pagos</span></a>
+                <span>Reservas</span></a>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item" id="navFacturas">
+            <a class="nav-link" href="facturas.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Facturas</span></a>
         </li>
 
         <!-- Divider -->
@@ -323,15 +297,18 @@
 </div>
 
 
-<<<<<<< HEAD:src/main/resources/static/app/servicios.html
+<!-- <<<<<<< HEAD:src/main/resources/static/app/servicios.html -->
 <!-- Pop up js -->
 <script src="../js/popup.js"></script>
-=======
+<!-- ======= -->
 
->>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821:src/main/resources/static/servicios.html
+<!-- >>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821:src/main/resources/static/servicios.html -->
 
 <!-- Validar token -->
-<script src="../js/validar-token.js"></script>
+<!-- <script src="../js/validar-token.js"></script> -->
+
+<!--  Acceso por Rol -->
+<script src="../js/acceso-rol.js"></script>
 
 <!-- Cerrar Sesión -->
 <script src="../js/logout.js"></script>
@@ -351,11 +328,11 @@
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<<<<<<< HEAD:src/main/resources/static/app/servicios.html
-<script src="../js/demo/plagastable.js"></script>
-=======
-<script src="js/demo/serviciotable.js"></script>
->>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821:src/main/resources/static/servicios.html
+<!-- <<<<<<< HEAD:src/main/resources/static/app/servicios.html -->
+<!-- <script src="../js/demo/plagastable.js"></script> -->
+<!-- ======= -->
+<script src="../js/demo/serviciotable.js"></script>
+<!-- >>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821:src/main/resources/static/servicios.html ->>
 
 </body>
 

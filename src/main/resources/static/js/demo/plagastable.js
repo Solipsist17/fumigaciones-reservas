@@ -46,7 +46,7 @@ async function cargarPlagas() {
 async function cargarDatosPlaga(id){
 
 // llamada a la API
-        const request = await fetch('plagas/' + id, {
+        const request = await fetch('/plagas/' + id, {
             method: 'GET',
             headers: getHeaders()
         });
@@ -117,6 +117,32 @@ async function editarPlaga(){
 
          console.log(plagas);
 
+}
+
+async function verificarInputsAgregar() {
+    const input1 = document.getElementById('txtnombre').value;
+    const input2 = document.getElementById('txtactivo').value;
+
+    const boton = document.getElementById('botonAgregar');
+
+    if (input1 && input2) {
+        boton.disabled = false;
+    } else {
+        boton.disabled = true;
+    }
+}
+async function verificarInputsEditar() {
+
+    const input1 = document.getElementById('txteditarnombre').value;
+    const input2 = document.getElementById('txteditaractivo').value;
+
+    const boton = document.getElementById('botonEditar');
+
+    if (input1 && input2) {
+        boton.disabled = false;
+    } else {
+        boton.disabled = true;
+    }
 }
 
 // Enviar el token en cada request

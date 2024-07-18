@@ -82,8 +82,8 @@ public class SecurityConfig {
                         .requestMatchers("/assets/**", "/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**", "/img/**").permitAll()
                         .anyRequest().authenticated()
                 ).formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
-                        .loginPage("/app/login.html")
-                        .permitAll()
+                                .loginPage("/app/login.html")
+                                .permitAll()
                         /*.defaultSuccessUrl(getSuccessUrlForRole(), true))
                 .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer
                         .logoutSuccessUrl("/app/login.html")*/

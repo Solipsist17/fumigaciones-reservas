@@ -190,14 +190,78 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
+                <!-- Modal Registrar -->
+                <div class="modal fade modal-Registrar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Agregar</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="txtnombre"  class="col-form-label">Plaga :</label>
+                                        <input type="text"  class="form-control" id="txtnombre">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtactivo" class="col-form-label">Activo:</label>
+                                        <select id="txtactivo" name="activo" class="form-control">
+                                            <option value="true">Sí</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
 
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                                <button type="button" class="btn btn-primary" onclick="registrarPlagas()"><i class="fas fa-check"></i> Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
+                <!-- Modal Editar -->
+                <div class="modal fade modal-Editar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <input type="hidden" id="txtid">
+                                    <div class="form-group">
+                                        <label for="txteditarnombre"  class="col-form-label">Plaga :</label>
+                                        <input type="text"  class="form-control" id="txteditarnombre">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txteditaractivo" class="col-form-label">Activo:</label>
+                                        <select id="txteditaractivo" name="activo" class="form-control">
+                                            <option value="true">Sí</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                                <button type="button" class="btn btn-primary" onclick="editarPlaga()"><i class="fas fa-check"></i> Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Gestión de Plagas</h1>
                 <br>
                 <p class="mb-4">Aquí podrá ver la lista de todos las maquinas y realizar las acciones correspondientes.</p>
 
                 <br>
-                <p class="mb-4"><a href="registrarPlaga.html" class="btn btn-success btn-lng">
+                <p class="mb-4"><a href="#" class="btn btn-success btn-lng" data-toggle="modal" data-target=".modal-Registrar">
                     <i class="fas fa-plus"></i> Agregar</a></p>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">

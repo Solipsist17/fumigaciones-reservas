@@ -49,9 +49,10 @@ public class SecurityConfig {
                         */
                         .requestMatchers(HttpMethod.GET, "/app/usuarios.html", "/app/clientes.html", "/app/maquinarias.html", "/app/plagas.html", "/app/productos.html")
                         .hasRole("ADMINISTRADOR")
-                        .requestMatchers(HttpMethod.GET, "/app/servicios.html", "/app/reservas.html", "/app/facturas.html", "/facturas/export-pdf")
+                        .requestMatchers(HttpMethod.GET, "/app/servicios.html", "/app/reservas.html", "/app/facturas.html")
                         .hasRole("GERENTE")
                         .requestMatchers(HttpMethod.GET, "/app/index.html").hasAnyRole("ADMINISTRADOR", "GERENTE")
+                        .requestMatchers(HttpMethod.GET, "/facturas/export-pdf", "/facturas/export-xls").permitAll()
                         /*
                         .requestMatchers("/app/login.html").permitAll()
                         .requestMatchers("/app/principal.html").permitAll()

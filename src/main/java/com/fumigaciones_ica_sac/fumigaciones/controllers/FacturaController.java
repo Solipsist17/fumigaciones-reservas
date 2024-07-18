@@ -77,7 +77,7 @@ public class FacturaController {
     public ResponseEntity<byte[]> exportPdf() throws JRException, FileNotFoundException {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDispositionFormData("petsReport", "petsReport.pdf");
+        headers.setContentDispositionFormData("facturasReport", "facturasReport.pdf");
         return ResponseEntity.ok().headers(headers).body(reporteFacturaService.exportPdf());
     }
 
@@ -86,7 +86,7 @@ public class FacturaController {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8");
         var contentDisposition = ContentDisposition.builder("attachment")
-                .filename("petsReport" + ".xls").build();
+                .filename("facturasReport" + ".xls").build();
         headers.setContentDisposition(contentDisposition);
         return ResponseEntity.ok()
                 .headers(headers)

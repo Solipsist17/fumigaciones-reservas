@@ -1,15 +1,13 @@
-// VALIDAR TOKEN
-autenticar();
-setInterval(autenticar, 300000); // cada 5 minutos valida el token
+/*
+$(document).ready(function() {
+    validarLogin();
+});
+*/
 
-function autenticar() {
+validarLogin();
+
+function validarLogin() {
     var token = localStorage.getItem('token');
-    if (!token) {
-       alert('No tiene acceso a esta página. Inicie sesión nuevamente.');
-       window.location.href = '/app/login.html'; // Redirigir al formulario de login si no hay token
-       return;
-    }
-
     console.log('Token:', token);
 
     // construir el header
@@ -37,9 +35,15 @@ function autenticar() {
                throw new Error('Error en la solicitud: ' + response.statusText);
             }
         })
+        .then(txt => {
+            if (txt == 'OK') {
+                window.location.href = '/app/index.html';
+            }
+        })
         .catch(error => {
-           console.error('Error al cargar la página protegida:', error);
-           alert('No tiene acceso a esta página. Inicie sesión nuevamente.');
-           window.location.href = '/app/login.html'; // Redirigir al formulario de login
+            console.error('Inicie sesión')
+           //console.error('Error al validar login:', error);
+           //alert('Error al validar login');
+           //window.location.href = '/login.html'; // Redirigir al formulario de login
         });
 }

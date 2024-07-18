@@ -78,7 +78,7 @@ public class SecurityConfig {
 >>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821
                         .requestMatchers("/a.html").permitAll()
                         */
-                        .requestMatchers("/assets/**", "/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**").permitAll()
+                        .requestMatchers("/assets/**", "/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**", "/img/**").permitAll()
                         .anyRequest().authenticated()
                 ).formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
                                 .loginPage("/app/login.html")

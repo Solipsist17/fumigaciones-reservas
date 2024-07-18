@@ -1,0 +1,159 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="books" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="template.engine" value="tabular_template"/>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#C71585">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#FFBFE7">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="facturasDataSet">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<field name="id" class="java.lang.Long"/>
+		<field name="idReserva" class="java.lang.Long"/>
+		<field name="cantidadHora" class="java.lang.Integer"/>
+		<field name="precioUnitario" class="java.math.BigDecimal"/>
+		<field name="total" class="java.math.BigDecimal"/>
+		<sortField name="id" order="Ascending"/>
+	</subDataset>
+	<parameter name="facturasDataSet" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<title>
+		<band height="31">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="50" backcolor="#8A1C48" uuid="25fef76e-caa9-470c-8255-3aa2b60f3e81"/>
+				<staticText>
+					<reportElement x="20" y="10" width="555" height="30" forecolor="#FFFFFF" uuid="eceb496a-d5d0-4b4f-a3bb-1403ee25e2a6"/>
+					<textElement textAlignment="Center">
+						<font size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporte de Facturas]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="430" splitType="Stretch">
+			<element kind="component" uuid="e7b92ec1-4923-4aeb-bfa0-0bca7f5833e6" x="10" y="20" width="545" height="160">
+				<component kind="table">
+					<datasetRun uuid="3950c182-4a7f-421e-ada2-65625eb9cb21" subDataset="facturasDataSet">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<column kind="single" uuid="83eff2b2-425b-4f3b-aa83-1c650546488d" width="109">
+						<tableHeader height="30" style="Table 1_TH"/>
+						<tableFooter height="30" style="Table 1_TH"/>
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="beac0ac1-96e4-4b1b-85a1-cb603626c76e" x="0" y="0" width="109" height="30">
+								<text><![CDATA[id]]></text>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table 1_CH"/>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="55146e15-9dae-4cb3-87ac-464f114d6abb" x="0" y="0" width="109" height="30">
+								<expression><![CDATA[$F{id}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="555ba638-bca4-424e-a793-71a79565dc48" width="109">
+						<tableHeader height="30" style="Table 1_TH"/>
+						<tableFooter height="30" style="Table 1_TH"/>
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="db42569d-85a2-4ef9-b95b-ae9a2915c970" x="0" y="0" width="109" height="30">
+								<text><![CDATA[idReserva]]></text>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table 1_CH"/>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="a7b8532b-b530-4740-98a1-0736f0c78c77" x="0" y="0" width="109" height="30">
+								<expression><![CDATA[$F{idReserva}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="a265ec90-970b-4709-a2e6-0747fd8ea650" width="109">
+						<tableHeader height="30" style="Table 1_TH"/>
+						<tableFooter height="30" style="Table 1_TH"/>
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="1d3adbee-1985-4044-a053-52329f877a67" x="0" y="0" width="109" height="30">
+								<text><![CDATA[cantidadHora]]></text>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table 1_CH"/>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="9ec25259-f6a1-4139-bc61-75e5e47bdb46" x="0" y="0" width="109" height="30">
+								<expression><![CDATA[$F{cantidadHora}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="7dd60e2d-b172-4a82-883c-f1cca0988d0a" width="109">
+						<tableHeader height="30" style="Table 1_TH"/>
+						<tableFooter height="30" style="Table 1_TH"/>
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="40e3d3bb-bcfd-408f-ba8c-2e63cfcffcb0" x="0" y="0" width="109" height="30">
+								<text><![CDATA[precioUnitario]]></text>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table 1_CH"/>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="625b76fa-2664-4107-b69f-254fc3d27a22" x="0" y="0" width="109" height="30">
+								<expression><![CDATA[$F{precioUnitario}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="38fd1df1-2dc6-4339-b51c-3ba16747d38c" width="109">
+						<tableHeader height="30" style="Table 1_TH"/>
+						<tableFooter height="30" style="Table 1_TH"/>
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="af175955-0eb2-4107-abdc-f2bfdf11275b" x="0" y="0" width="109" height="30">
+								<text><![CDATA[total]]></text>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table 1_CH"/>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="59522be0-cd39-4094-93be-1ad5c8b90014" x="0" y="0" width="109" height="30">
+								<expression><![CDATA[$F{total}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+				</component>
+				<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+				<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+				<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+				<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+				<property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
+				<property name="com.jaspersoft.studio.components.autoresize.proportional" value="true"/>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+	<pageFooter height="17">
+		<element kind="textField" uuid="30c0a284-556e-4d9a-a32d-6b076b547e35" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" hTextAlign="Right">
+			<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
+		</element>
+		<element kind="textField" uuid="7d23f304-acaa-4007-aabe-cbbfb07c075e" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" evaluationTime="Report">
+			<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="8930534b-464e-4b09-bfca-2bc6e4b0b7b9" x="0" y="4" width="280" height="13" pattern="M/d/yy">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+	</pageFooter>
+</jasperReport>

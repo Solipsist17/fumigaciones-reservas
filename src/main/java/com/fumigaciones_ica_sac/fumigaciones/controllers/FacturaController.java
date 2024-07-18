@@ -10,6 +10,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import net.sf.jasperreports.engine.JRException;
+import org.springframework.http.*;
+
+import java.io.FileNotFoundException;
 
 import java.net.URI;
 import java.util.Optional;
@@ -20,11 +24,13 @@ public class FacturaController {
 
     private final FacturaRepository facturaRepository;
     private final RegistroFacturaService registroFacturaService;
+    private final ReporteFacturaService reporteFacturaService;
 
     @Autowired
-    public FacturaController(FacturaRepository facturaRepository, RegistroFacturaService registroFacturaService) {
+    public FacturaController(FacturaRepository facturaRepository, RegistroFacturaService registroFacturaService, ReporteFacturaService reporteFacturaService) {
         this.facturaRepository = facturaRepository;
         this.registroFacturaService = registroFacturaService;
+        this.reporteFacturaService = reporteFacturaService;
     }
 
     @PostMapping
@@ -65,5 +71,25 @@ public class FacturaController {
         Factura factura = facturaRepository.getReferenceById(id);
         facturaRepository.delete(factura);
         return ResponseEntity.noContent().build(); // code 204
+    }
+
+    @GetMapping("/export-pdf")
+    public ResponseEntity<byte[]> exportPdf() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("petsReport", "petsReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(reporteFacturaService.exportPdf());
+    }
+
+    @GetMapping("/export-xls")
+    public ResponseEntity<byte[]> exportXls() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8");
+        var contentDisposition = ContentDisposition.builder("attachment")
+                .filename("petsReport" + ".xls").build();
+        headers.setContentDisposition(contentDisposition);
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(reporteFacturaService.exportXls());
     }
 }

@@ -1,6 +1,5 @@
 $(document).ready(function() {
     mostrarEditarMaquinaria();
-    $('#formEditar').html('');
 
 });
 
@@ -11,14 +10,14 @@ $(document).ready(function() {
     let valor = localStorage.getItem('maquinariaC');
 
     let coleccion = JSON.parse(valor);
-
+    const nombre = localStorage.nombre;
     console.log(coleccion.id);
 
-            document.getElementById("txtid").value = coleccion.id;
-            document.getElementById("txtnombre").value = coleccion.nombre;
-            document.getElementById("txtcantidad").value = coleccion.cantidad;
-            document.getElementById("txtactivo").value = coleccion.activo;
-
+    document.getElementById("txtid").value = coleccion.id;
+    document.getElementById("txtnombre").value = coleccion.nombre;
+    document.getElementById("txtcantidad").value = coleccion.cantidad;
+    document.getElementById("txtactivo").value = coleccion.activo;
+    document.querySelector('#nombreUsuario').outerHTML = nombre;
 }
 
 async function editarMaquinaria(){
@@ -38,6 +37,9 @@ async function editarMaquinaria(){
 
          console.log(maquinarias);
 
+}
+async function regresarTabla(){
+    localStorage.removeItem('maquinariaC');
 }
 // Enviar el token en cada request
 function getHeaders() {

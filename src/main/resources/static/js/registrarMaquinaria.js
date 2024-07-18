@@ -1,6 +1,7 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
 //ON READY
+mostrarUsuario()
 });
 
 async function registrarMaquinarias() {
@@ -27,7 +28,11 @@ async function registrarMaquinarias() {
 
 }
 
+async function mostrarUsuario(){
 
+    const nombre = localStorage.nombre;
+    document.querySelector('#nombreUsuario').outerHTML = nombre;
+}
 
 
 

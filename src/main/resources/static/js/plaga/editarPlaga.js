@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(document).ready(function() {
     console.log('aaaaa');
     mostrarEditarPlaga();
@@ -8,17 +9,30 @@ mostrarEditarPlaga();
 
  async function mostrarEditarPlaga() {
  console.log('editar plaga ejecutandose...');
+=======
+
+    $(document).ready(function() {
+    mostrarEditarPlaga();
+
+    });
+
+
+
+async function mostrarEditarPlaga() {
+>>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821
 
     let valor = localStorage.getItem('plagaC');
 
     let coleccion = JSON.parse(valor);
+    const nombre = localStorage.nombre;
+    console.log(nombre);
+    console.log(coleccion);
 
-    console.log(coleccion.id);
+    document.getElementById("txtid").value = coleccion.id;
+    document.getElementById("txtnombre").value = coleccion.nombre;
+    document.getElementById("txtactivo").value = coleccion.activo;
 
-            document.getElementById("txtid").value = coleccion.id;
-            document.getElementById("txtnombre").value = coleccion.nombre;
-            document.getElementById("txtactivo").value = coleccion.activo;
-
+    document.querySelector('#nombreUsuario').outerHTML = nombre;
 }
 
 async function editarPlaga(){
@@ -36,6 +50,11 @@ async function editarPlaga(){
 
          console.log(plagas);
 
+}
+
+async function regresarTabla(){
+
+    localStorage.removeItem('plagaC');
 }
 // Enviar el token en cada request
 function getHeaders() {

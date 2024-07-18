@@ -60,7 +60,15 @@ public class SecurityConfig {
                         .requestMatchers("/editarProducto.html").permitAll()
                         .requestMatchers("/registrarPlaga.html").permitAll()
                         .requestMatchers("/editarPlaga.html").permitAll()
+<<<<<<< HEAD
                         .requestMatchers("/index.html").hasAnyRole("ADMINISTRADOR", "GERENTE")
+=======
+                        .requestMatchers("/registrarServicio.html").permitAll()
+                        .requestMatchers("/editarServicio.html").permitAll()
+                        .requestMatchers("/index.html").permitAll()
+                        .requestMatchers("/cards.html").permitAll()
+                        .requestMatchers("/register.html").permitAll()
+>>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821
                         .requestMatchers("/a.html").permitAll()
                         */
                         .requestMatchers("/assets/**", "/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**").permitAll()

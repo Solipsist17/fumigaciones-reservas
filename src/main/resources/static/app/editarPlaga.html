@@ -12,17 +12,21 @@
     <title>Pagina de administrador</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template -->
+<<<<<<< HEAD:src/main/resources/static/app/editarPlaga.html
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+
+=======
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-
+>>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821:src/main/resources/static/editarPlaga.html
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -38,7 +42,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
 
             <div class="sidebar-brand-text mx-3">Admin</div>
         </a>
@@ -48,7 +52,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="../index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -219,7 +223,20 @@
                 <!-- Topbar Search -->
 
 
+<<<<<<< HEAD:src/main/resources/static/app/editarPlaga.html
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <img class="img-profile rounded-circle"
+                             src="../img/undraw_profile.svg">
+                    </a>
+                    <!-- Dropdown - User Information -->
+=======
+                <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
+>>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821:src/main/resources/static/editarPlaga.html
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
@@ -248,37 +265,28 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-
             <div class="container-fluid">
-                <h2>Agregar Maquinaria</h2>
+                <h2>Editar PLaga</h2>
                 <br>
                 <hr>
                 <!-- Page Heading -->
-                <form >
+                <form id="formEditar">
+
+                    <input type="hidden" id="txtid">
+
+                    <!--<a href="#" onclick="mostrarEditarPlaga()" class="btn btn-secondary btn-m2"><i class="fa fa-repeat"></i> Cargar datos anteriores</a>-->
+
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nombre:</label>
+
                         <div class="col-sm-10">
-                            <input type="text" id="txtnombre" name="nombre" class="form-control">
+                            <input type="text" class="form-control" id="txtnombre" name="nombre" placeholder="Ingrese el nombre">
                         </div>
 
                     </div>
 
 
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Cantidad:</label>
-                        <div class="col-sm-10">
-                            <input type="number" id="txtcantidad" name="cantidad" class="form-control">
-                        </div>
-
-                    </div>
-
-
-
-                    <!--<label>Activo:</label>
-                    <input type="number" id="txtactivo" name="activo">
-                    <br>-->
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Activo:</label>
                         <div class="col-sm-10">
@@ -289,16 +297,19 @@
                         </div>
 
                     </div>
+                    <hr>
 
                     <div class="form-row align-items-center">
-                        <div class="col-auto">
-                            <a href="#" onclick="registrarMaquinarias()" class="btn btn-success mb-2">
-                                <i class="fas fa-check"></i> Agregar</a>
-                        </div>
-
-                        <div class="col-auto">
-                            <a href="maquinarias.html" onclick="regresarTabla()" class="btn btn-secondary mb-2"><i class="fa fa-arrow-left"></i> Volver</a>
-                        </div>
+                            <div class="col-auto">
+                                <a href="#" onclick="editarPlaga()" class="btn btn-success mb-2">
+                                    <i class="fas fa-check"></i> Confirmar</a>
+                            </div>
+                            <div class="col-auto">
+                                <a href="plagas.html" onclick="regresarTabla()" class="btn btn-secondary mb-2"><i class="fa fa-arrow-left"></i> Volver</a>
+                            </div>
+                            <div class="col-auto">
+                                <a href="#" onclick="mostrarEditarPlaga()" class="btn btn-secondary mb-2"><i class="fa fa-repeat"></i> Cargar datos anteriores</a>
+                            </div>
                     </div>
 
                 </form>
@@ -351,30 +362,29 @@
 </div>
 
 
+<script src="../js/plaga/editarPlaga.js"></script>
 
-<script src="js/registrarMaquinaria.js"></script>
 <!-- Validar token -->
-<script src="js/validar-token.js"></script>
+<script src="../js/validar-token.js"></script>
 
 <!-- Cerrar Sesión -->
-<script src="js/logout.js"></script>
+<script src="../js/logout.js"></script>
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<script src="../js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="js/demo/maquinariastable.js"></script>
+
 
 </body>
 

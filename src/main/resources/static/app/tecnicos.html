@@ -9,26 +9,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pagina de administrador</title>
+    <title>Pagina administrador</title>
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
-
-<div id="protected-content"></div>
-
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -37,19 +31,18 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-
-            <div class="sidebar-brand-text mx-3">Admin</div>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
+            <div class="sidebar-brand-text mx-3">ADMIN</div>
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="index.html">
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+                <span>Eventos</span></a>
         </li>
 
         <!-- Divider -->
@@ -62,52 +55,53 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="usuarios.html">
+            <a class="nav-link" href="../reportes.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Reportes</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="usuarios.html">
+            <a class="nav-link" href="../estadisticas.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Estadisticas</span></a>
         </li>
-        <!-- Nav Item - Pages Collapse Menu -->
 
-        <!-- <li class="nav-item">
-             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                 aria-expanded="true" aria-controls="collapseTwo">
-                 <i class="fas fa-fw fa-cog"></i>
-                 <span>Components</span>
-             </a>
-             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                 <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">Custom Components:</h6>
-                     <a class="collapse-item" href="buttons.html">Buttons</a>
-                     <a class="collapse-item" href="cards.html">Cards</a>
-                 </div>
-             </div>
-         </li>-->
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <!--<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Components</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Components:</h6>
+                    <a class="collapse-item" href="buttons.html">Buttons</a>
+                    <a class="collapse-item" href="cards.html">Cards</a>
+                </div>
+            </div>
+        </li>-->
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <!-- <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                  aria-expanded="true" aria-controls="collapseUtilities">
-                  <i class="fas fa-fw fa-wrench"></i>
-                  <span>Utilities</span>
-              </a>
-              <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                  data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Custom Utilities:</h6>
-                      <a class="collapse-item" href="utilities-color.html">Colors</a>
-                      <a class="collapse-item" href="utilities-border.html">Borders</a>
-                      <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                      <a class="collapse-item" href="utilities-other.html">Other</a>
-                  </div>
-              </div>
-          </li>-->
+        <!--<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Utilities</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Utilities:</h6>
+                    <a class="collapse-item" href="utilities-color.html">Colors</a>
+                    <a class="collapse-item" href="utilities-border.html">Borders</a>
+                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                    <a class="collapse-item" href="utilities-other.html">Other</a>
+                </div>
+            </div>
+        </li>-->
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -139,20 +133,6 @@
         </li>-->
 
         <!-- Nav Item - Charts -->
-        <!--<li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>-->
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="usuarios.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Usuarios</span></a>
-        </li>
-
-        <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="servicios.html">
                 <i class="fas fa-fw fa-table"></i>
@@ -161,25 +141,18 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="maquinarias.html">
+            <a class="nav-link" href="tareas.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Maquinarias</span></a>
+                <span>Tareas</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="plagas.html">
+            <a class="nav-link" href="usuarios.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Plagas</span></a>
+                <span>Usuarios</span></a>
         </li>
 
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="productos.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Productos</span></a>
-        </li>
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
@@ -188,6 +161,8 @@
                 <span>Facturacion y Pagos</span></a>
         </li>
 
+
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
@@ -195,6 +170,9 @@
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
+
+        <!-- Sidebar Message -->
+
 
     </ul>
     <!-- End of Sidebar -->
@@ -209,25 +187,23 @@
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 <!-- Sidebar Toggle (Topbar) -->
-                <form class="form-inline">
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                </form>
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
 
                 <!-- Topbar Search -->
-                <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <!--<form
+                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
+                            aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
                     </div>
-                </form>
+                </form>-->
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -323,7 +299,7 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                    <img class="rounded-circle" src="../img/undraw_profile_1.svg"
                                          alt="...">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
@@ -335,7 +311,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                    <img class="rounded-circle" src="../img/undraw_profile_2.svg"
                                          alt="...">
                                     <div class="status-indicator"></div>
                                 </div>
@@ -347,7 +323,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                    <img class="rounded-circle" src="../img/undraw_profile_3.svg"
                                          alt="...">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
@@ -379,14 +355,14 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <!--<span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>-->
                             <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
+                                 src="../img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                        <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown">
+                           <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
@@ -403,56 +379,58 @@
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
-                        </div>
+                        </div>-->
                     </li>
 
                 </ul>
 
             </nav>
             <!-- End of Topbar -->
-
-            <!-- Begin Page Content -->
             <div class="container-fluid">
-                <h2>Registrar Plaga</h2>
-                <br>
-                <hr>
+
                 <!-- Page Heading -->
-                <form >
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nombre:</label>
-                        <div class="col-sm-10">
-                            <input type="text" id="txtnombre" name="nombre" class="form-control" placeholder="Ingrese el nombre">
-                        </div>
+                <h1 class="h3 mb-2 text-gray-800">Gestión de Tecnicos</h1>
+                <p class="mb-4">Aquí podrá ver la lista de todos los tecnicos disponibles y realizar las acciones correspondientes.</p>
 
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Tabla de Tecnicos</h6>
                     </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="usuariostable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Servicio</th>
+                                    <th>Fecha</th>
+                                    <th>Personal</th>
+                                    <th>Descripcion</th>
+                                    <th>Acciones</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Servicio</th>
+                                    <th>Fecha</th>
+                                    <th>Personal</th>
+                                    <th>Descripcion</th>
+                                    <th>Acciones</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
 
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Activo:</label>
-                        <div class="col-sm-10">
-                            <select id="txtactivo" name="activo" class="form-control form-control-sm">
-                                <option value="true">Sí</option>
-                                <option value="false">No</option>
-                            </select>
+
+                                </tbody>
+                            </table>
                         </div>
-
                     </div>
-                    <hr>
-                    <div class="form-row align-items-center">
-                        <div class="col-auto">
-                            <a href="#" onclick="registrarPlagas()" class="btn btn-success mb-2">
-                                <i class="fas fa-check"></i> Agregar</a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="plagas.html" onclick="regresarTabla()" class="btn btn-secondary mb-2"><i class="fa fa-arrow-left"></i> Volver</a>
-                        </div>
-                    </div>
-
-
-                </form>
+                </div>
 
             </div>
-            <!-- /.container-fluid -->
-
+            <!-- Begin Page Content -->
         </div>
         <!-- End of Main Content -->
 
@@ -460,7 +438,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
+                    <span>Copyright &copy; Your Website 2021</span>
                 </div>
             </div>
         </footer>
@@ -491,37 +469,28 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a onclick="logout()" class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="login.html">Logout</a>
             </div>
         </div>
     </div>
 </div>
 
-
-
-<script src="js/registrarMaquinaria.js"></script>
-<!-- Validar token -->
-<script src="js/validar-token.js"></script>
-
-<!-- Cerrar Sesión -->
-<script src="js/logout.js"></script>
-
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<script src="../js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="../vendor/chart.js/Chart.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/plaga/registrarPlaga.js"></script>
+<script src="../js/demo/chart-area-demo.js"></script>
+<script src="../js/demo/chart-pie-demo.js"></script>
 
 </body>
 

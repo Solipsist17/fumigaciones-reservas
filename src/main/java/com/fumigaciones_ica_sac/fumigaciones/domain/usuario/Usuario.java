@@ -7,8 +7,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity(name = "Usuario")
 @Table(name = "usuarios")
@@ -25,6 +27,8 @@ public class Usuario implements UserDetails {
     private String clave;
     @Column(name = "activo")
     private Boolean activo;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
 
     public Usuario(Long id) {
         this.id = id;
@@ -44,7 +48,13 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + rol.name()));
+
+        /*
+        return  Arrays.stream(Rol.values())
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+                .collect(Collectors.toList());
+        */
     }
 
     @Override

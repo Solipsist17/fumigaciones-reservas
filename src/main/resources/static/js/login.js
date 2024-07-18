@@ -22,7 +22,7 @@ async function iniciarSesion() {
     if (response != 'ERROR') {
         localStorage.token = response.jwtToken;
         localStorage.nombre = datos.nombre;
-        window.location.href = 'usuarios.html';
+        window.location.href = '/app/index.html';//////////////////////
         //cargarPagina();
     } else {
         alert('Las credenciales son incorrectas. Por favor intente nuevamente');

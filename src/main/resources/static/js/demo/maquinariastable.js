@@ -7,7 +7,7 @@ $(document).ready(function() {
 async function cargarMaquinarias() {
 
     // llamada a la API
-        const request = await fetch('maquinarias', {
+        const request = await fetch('/maquinarias', {
             method: 'GET',
             headers: getHeaders()
         });
@@ -18,9 +18,15 @@ async function cargarMaquinarias() {
     // agregar los datos
         let maquinariasHTML = '';
         for (let maquinaria of maquinarias) {
+<<<<<<< HEAD
+            let btnEditar = '<a href="../app/editarMaquinaria.html" onclick="cargarDatosMaquinaria('+maquinaria.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
+            let btnEliminar = '<a href="#" onclick="eliminarMaquinaria('+maquinaria.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
+            let maquinariaHTML = '<tr><td>'+maquinaria.id+'</td><td>'+maquinaria.nombre+'</td><td>'+maquinaria.cantidad+'</td><td>'+maquinaria.activo+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
+=======
             let btnEditar = '<a href="../editarMaquinaria.html" onclick="cargarDatosMaquinaria('+maquinaria.id+')" class="btn btn-warning"><i class="fa fa-pen"></i> Editar</a>';
             let btnEliminar = '<a href="#" onclick="eliminarMaquinaria('+maquinaria.id+')" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</a>';
             let maquinariaHTML = '<tr><td>'+maquinaria.id+'</td><td>'+maquinaria.nombre+'</td><td>'+maquinaria.cantidad+'</td><td>'+maquinaria.activo+'</td><td>'+btnEditar+'</td><td>'+btnEliminar+'</td></tr>';
+>>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821
             maquinariasHTML += maquinariaHTML;
         }
 

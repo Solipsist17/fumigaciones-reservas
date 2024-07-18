@@ -6,9 +6,10 @@ function logout() {
        }
        }).then(response => {
           if (response.ok) {
-            localStorage.removeItem('token'); // Eliminar el token del localStorage
-            localStorage.removeItem('nombre');
-            window.location.href = '/login.html'; // Redirigir al formulario de login
+            //localStorage.removeItem('token'); // Eliminar el token del localStorage
+            //localStorage.removeItem('nombre');
+            localStorage.clear();
+            window.location.href = '/app/login.html'; // Redirigir al formulario de login
           }
        }).catch(error => {
           console.error('Error al cerrar sesión:', error);

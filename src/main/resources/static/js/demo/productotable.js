@@ -7,7 +7,7 @@ $(document).ready(function() {
 async function cargarProductos() {
 
     // llamada a la API
-        const request = await fetch('productos', {
+        const request = await fetch('/productos', {
             method: 'GET',
             headers: getHeaders()
         });

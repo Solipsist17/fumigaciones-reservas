@@ -1,8 +1,10 @@
 package com.fumigaciones_ica_sac.fumigaciones.infra.security;
 
+import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.Usuario;
 import com.fumigaciones_ica_sac.fumigaciones.domain.usuario.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ public class SecurityFilter extends OncePerRequestFilter {
         this.usuarioRepository = usuarioRepository;
     }
 
+    /*
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // obtenemos el authHeader
@@ -47,6 +50,75 @@ public class SecurityFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
+        filterChain.doFilter(request, response);
+    }
+    */
+
+    /*
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String token = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("token".equals(cookie.getName())) {
+                    token = cookie.getValue();
+                    break;
+                }
+            }
+        }
+
+        // obtenemos el auth
+
+        if (token != null) {
+            String nombreUsuario = tokenService.getSubject(token);
+            if (nombreUsuario != null) {
+                Usuario usuario = (Usuario) usuarioRepository.findByNombre(nombreUsuario);
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                        usuario, null, usuario.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+        }
+        filterChain.doFilter(request, response);
+    }
+    */
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        // Verificar si existe el token en el encabezado Authorization
+        String authHeader = request.getHeader("Authorization");
+        String token = null;
+
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            System.out.println("AuthHeader: " + authHeader);
+            token = authHeader.replace("Bearer ", "");
+        }
+
+        // Si no se encontró en el encabezado, intentar obtenerlo de la cookie
+        if (token == null) {
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if ("token".equals(cookie.getName())) {
+                        System.out.println("cookie: " + cookie.getValue());
+                        token = cookie.getValue();
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (token != null) {
+            // Verificar si el token es válido
+            String nombreUsuario = tokenService.getSubject(token);
+            if (nombreUsuario != null) {
+                Usuario usuario = (Usuario) usuarioRepository.findByNombre(nombreUsuario);
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                        usuario, null, usuario.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+        }
+
         filterChain.doFilter(request, response);
     }
 }

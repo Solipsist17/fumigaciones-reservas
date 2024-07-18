@@ -217,14 +217,109 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
+                <!-- Modal Registrar -->
+                <div class="modal fade modal-Registrar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Agregar</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div id="selectmaquinaria">
+                                    </div>
+                                    <div id="selectproducto">
+                                    </div>
+                                    <div id="selectplaga">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtnombre"  class="col-form-label">Nombre :</label>
+                                        <input type="text"  class="form-control" id="txtnombre" onclick="verificarInputsAgregar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtcantidadmaquinaria"  class="col-form-label">N° de Maquinarias :</label>
+                                        <input type="number"  class="form-control" id="txtcantidadmaquinaria" onclick="verificarInputsAgregar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtcantidadproducto"  class="col-form-label">N° de Productos :</label>
+                                        <input type="number"  class="form-control" id="txtcantidadproducto" onclick="verificarInputsAgregar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtpreciohora"  class="col-form-label">Precio de hora :</label>
+                                        <input type="number"  class="form-control" id="txtpreciohora" onclick="verificarInputsAgregar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtdescripcion"  class="col-form-label">Descripcion :</label>
+                                        <textarea   class="form-control" id="txtdescripcion" onclick="verificarInputsAgregar()"></textarea>
+                                    </div>
+                                    
+                                </form>
+                            </div>
 
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                                <button type="button" class="btn btn-primary" id="botonAgregar" onclick="registrarPlagas()" disabled><i class="fas fa-check"></i> Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
+                <!-- Modal Editar -->
+                <div class="modal fade modal-Editar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div id="selecteditmaquinaria">
+                                    </div>
+                                    <div id="selecteditproducto">
+                                    </div>
+                                    <div id="selecteditplaga">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txteditarnombre"  class="col-form-label">Nombre :</label>
+                                        <input type="text"  class="form-control" id="txteditarnombre" onclick="verificarInputsAgregar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txteditarcantidadmaquinaria"  class="col-form-label">N° de Maquinarias :</label>
+                                        <input type="number"  class="form-control" id="txteditarcantidadmaquinaria" onclick="verificarInputsAgregar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txteditarcantidadproducto"  class="col-form-label">N° de Productos :</label>
+                                        <input type="number"  class="form-control" id="txteditarcantidadproducto" onclick="verificarInputsAgregar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txteditarpreciohora"  class="col-form-label">Precio de hora :</label>
+                                        <input type="number"  class="form-control" id="txteditarpreciohora" onclick="verificarInputsAgregar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txteditardescripcion"  class="col-form-label">Descripcion :</label>
+                                        <textarea   class="form-control" id="txteditardescripcion" onclick="verificarInputsAgregar()"></textarea>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                                <button type="button" class="btn btn-primary" id="botonEditar" onclick="editarPlaga()" disabled><i class="fas fa-check"></i> Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Gestión de Servicio</h1>
                 <br>
                 <p class="mb-4">Aquí podrá ver la lista de todos las maquinas y realizar las acciones correspondientes.</p>
 
                 <br>
-                <p class="mb-4"><a href="registrarServicio.html" class="btn btn-success btn-lng">
+                <p class="mb-4"><a href="#" class="btn btn-success btn-lng" data-toggle="modal" data-target=".modal-Registrar">
                     <i class="fas fa-plus"></i> Agregar</a></p>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -323,12 +418,7 @@
 </div>
 
 
-<<<<<<< HEAD:src/main/resources/static/app/servicios.html
-<!-- Pop up js -->
-<script src="../js/popup.js"></script>
-=======
 
->>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821:src/main/resources/static/servicios.html
 
 <!-- Validar token -->
 <script src="../js/validar-token.js"></script>
@@ -351,11 +441,9 @@
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<<<<<<< HEAD:src/main/resources/static/app/servicios.html
-<script src="../js/demo/plagastable.js"></script>
-=======
-<script src="js/demo/serviciotable.js"></script>
->>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821:src/main/resources/static/servicios.html
+
+<script src="../js/demo/serviciotable.js"></script>
+
 
 </body>
 

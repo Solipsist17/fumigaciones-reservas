@@ -41,10 +41,17 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/auth/logout").permitAll()
                         .requestMatchers("/auth/login/validate-token").permitAll()
                         //.requestMatchers(HttpMethod.GET, "/app/**").permitAll()
+                        /*
                         .requestMatchers(HttpMethod.GET, "/app/index.html", "/app/usuarios.html", "/app/clientes.html", "/app/maquinarias.html", "/app/plagas.html", "/app/productos.html")
                         .hasRole("ADMINISTRADOR")
                         .requestMatchers(HttpMethod.GET, "/app/index.html", "/app/servicios.html", "/app/reservas.html", "/app/facturas.html")
                         .hasRole("GERENTE")
+                        */
+                        .requestMatchers(HttpMethod.GET, "/app/usuarios.html", "/app/clientes.html", "/app/maquinarias.html", "/app/plagas.html", "/app/productos.html")
+                        .hasRole("ADMINISTRADOR")
+                        .requestMatchers(HttpMethod.GET, "/app/servicios.html", "/app/reservas.html", "/app/facturas.html", "/facturas/export-pdf")
+                        .hasRole("GERENTE")
+                        .requestMatchers(HttpMethod.GET, "/app/index.html").hasAnyRole("ADMINISTRADOR", "GERENTE")
                         /*
                         .requestMatchers("/app/login.html").permitAll()
                         .requestMatchers("/app/principal.html").permitAll()
@@ -74,8 +81,8 @@ public class SecurityConfig {
                         .requestMatchers("/assets/**", "/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**").permitAll()
                         .anyRequest().authenticated()
                 ).formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
-                        .loginPage("/app/login.html")
-                        .permitAll()
+                                .loginPage("/app/login.html")
+                                .permitAll()
                         /*.defaultSuccessUrl(getSuccessUrlForRole(), true))
                 .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer
                         .logoutSuccessUrl("/app/login.html")*/

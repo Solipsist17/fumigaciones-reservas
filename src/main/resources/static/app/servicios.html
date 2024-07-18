@@ -12,16 +12,16 @@
     <title>Pagina de administrador</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -37,7 +37,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
 
             <div class="sidebar-brand-text mx-3">Admin</div>
         </a>
@@ -47,7 +47,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="../index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -116,34 +116,6 @@
         <div class="sidebar-heading">
             GESTION
         </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <!--<li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="login.html">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>
-                </div>
-            </div>
-        </li>-->
-
-        <!-- Nav Item - Charts -->
-        <!--<li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>-->
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
@@ -216,7 +188,8 @@
                 </form>
 
                 <!-- Topbar Search -->
-
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
@@ -224,10 +197,17 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                             <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
+                                 src="../img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
-
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="principal.html" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
                     </li>
 
                 </ul>
@@ -239,35 +219,57 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <form id="formEditar">
+                <h1 class="h3 mb-2 text-gray-800">Gestión de Maquinaria</h1>
+                <br>
+                <p class="mb-4">Aquí podrá ver la lista de todos las maquinas y realizar las acciones correspondientes.</p>
 
-                    <input type="hidden" id="txtid">
+                <br>
+                <p class="mb-4">Agregar:    <a href="agregarMaquinaria.html" class="btn btn-success btn-circle btn-lng">
+                    <i class="fas fa-plus"></i></a></p>
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Tabla de Plagas</h6>
+
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="plagastable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Maquinaria</th>
+                                    <th>Plaga</th>
+                                    <th>Producto</th>
+                                    <th>Nombre</th>
+                                    <th>Cantidad Maquinaria</th>
+                                    <th>Cantidad Producto</th>
+                                    <th>Precio hora</th>
+                                    <th>Descripcion</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Maquinaria</th>
+                                    <th>Plaga</th>
+                                    <th>Producto</th>
+                                    <th>Nombre</th>
+                                    <th>Cantidad Maquinaria</th>
+                                    <th>Cantidad Producto</th>
+                                    <th>Precio hora</th>
+                                    <th>Descripcion</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
 
 
-                    <label>Nombre:</label>
-                    <input type="text" id="txtnombre" name="nombre">
-                    <br>
-
-                    <label>Cantidad:</label>
-                    <input type="number" id="txtcantidad" name="cantidad">
-                    <br>
-
-                    <label>Activo:</label>
-                    <select id="txtactivo" name="activo" required>
-                        <option value="true">Sí</option>
-                        <option value="false">No</option>
-                    </select>
-                    <br>
-
-                    <label>Cargar datos anteriores:</label>
-                    <a href="#" onclick="mostrarEditarMaquinaria()" class="btn btn-secondary btn-circle btn-lng"><i class="fa fa-repeat"></i></a>
-                    <br>
-
-                    <label>Confirmar</label>
-                    <a href="#" onclick="editarMaquinaria()" class="btn btn-success btn-circle btn-lng">
-                        <i class="fas fa-check"></i></a>
-
-                </form>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <!-- /.container-fluid -->
@@ -317,29 +319,31 @@
 </div>
 
 
-<script src="js/editarMaquinaria.js"></script>
+<!-- Pop up js -->
+<script src="../js/popup.js"></script>
 
 <!-- Validar token -->
-<script src="js/validar-token.js"></script>
+<script src="../js/validar-token.js"></script>
 
 <!-- Cerrar Sesión -->
-<script src="js/logout.js"></script>
+<script src="../js/logout.js"></script>
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<script src="../js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-
+<!-- Page level custom scripts -->
+<script src="../js/demo/plagastable.js"></script>
 
 </body>
 

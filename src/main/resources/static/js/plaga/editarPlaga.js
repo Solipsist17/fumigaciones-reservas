@@ -1,11 +1,13 @@
 $(document).ready(function() {
-
-
+    console.log('aaaaa');
+    mostrarEditarPlaga();
+    console.log('aaaaa');
 });
-
+mostrarEditarPlaga();
 
 
  async function mostrarEditarPlaga() {
+ console.log('editar plaga ejecutandose...');
 
     let valor = localStorage.getItem('plagaC');
 
@@ -20,7 +22,6 @@ $(document).ready(function() {
 }
 
 async function editarPlaga(){
-
     let datos = {};
         datos.id = document.getElementById('txtid').value;
         datos.nombre= document.getElementById('txtnombre').value;

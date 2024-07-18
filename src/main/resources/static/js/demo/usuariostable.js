@@ -6,18 +6,20 @@ $(document).ready(function() {
 
 async function cargarUsuarios() {
     // llamada a la API
-    const request = await fetch('usuarios', {
+    const request = await fetch('/usuarios', {
         method: 'GET',
         headers: getHeaders()
     });
     const usuarios = await request.json();
 
+    console.log('AQUI');
     console.log(usuarios);
 
     // agregar los datos
     let usuariosHTML = '';
     for (let usuario of usuarios) {
-        let btnEditar = '<a href="../editarUsuario.html" onclick="cargarDatosUsuario('+usuario.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
+        console.log(usuario);
+        let btnEditar = '<a href="../app/editarUsuario.html" onclick="cargarDatosUsuario('+usuario.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
         let btnEliminar = '<a href="#" onclick="eliminarUsuario('+usuario.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
         let usuarioHTML = '<tr><td>'+usuario.id+'</td><td>'+usuario.nombre+'</td><td>'+usuario.activo+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
         usuariosHTML += usuarioHTML;

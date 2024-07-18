@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -35,9 +38,17 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers("/login.html").permitAll()
-                        .requestMatchers("/principal.html").permitAll()
-                        .requestMatchers("/usuarios.html").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/logout").permitAll()
+                        .requestMatchers("/auth/login/validate-token").permitAll()
+                        //.requestMatchers(HttpMethod.GET, "/app/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/app/index.html", "/app/usuarios.html", "/app/clientes.html", "/app/maquinarias.html", "/app/plagas.html", "/app/productos.html")
+                        .hasRole("ADMINISTRADOR")
+                        .requestMatchers(HttpMethod.GET, "/app/index.html", "/app/servicios.html", "/app/reservas.html", "/app/facturas.html")
+                        .hasRole("GERENTE")
+                        /*
+                        .requestMatchers("/app/login.html").permitAll()
+                        .requestMatchers("/app/principal.html").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/app/usuarios.html").hasAnyRole("ADMINISTRADOR", "GERENTE")
                         .requestMatchers("/productos.html").permitAll()
                         .requestMatchers("/plagas.html").permitAll()
                         .requestMatchers("/maquinarias.html").permitAll()
@@ -49,16 +60,17 @@ public class SecurityConfig {
                         .requestMatchers("/editarProducto.html").permitAll()
                         .requestMatchers("/registrarPlaga.html").permitAll()
                         .requestMatchers("/editarPlaga.html").permitAll()
-                        .requestMatchers("/index.html").permitAll()
+                        .requestMatchers("/index.html").hasAnyRole("ADMINISTRADOR", "GERENTE")
                         .requestMatchers("/a.html").permitAll()
+                        */
                         .requestMatchers("/assets/**", "/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**").permitAll()
                         .anyRequest().authenticated()
                 ).formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
-                        .loginPage("/principal.html")
+                        .loginPage("/app/login.html")
                         .permitAll()
-                        .defaultSuccessUrl("/usuarios.html"))
+                        /*.defaultSuccessUrl(getSuccessUrlForRole(), true))
                 .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer
-                        .logoutSuccessUrl("/login.html")
+                        .logoutSuccessUrl("/app/login.html")*/
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
@@ -73,5 +85,20 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    private String getSuccessUrlForRole() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            for (GrantedAuthority authority : authentication.getAuthorities()) {
+                if (authority.getAuthority().equals("ROLE_ADMINISTRADOR")) {
+                    return "/app/usuarios.html";
+                } else if (authority.getAuthority().equals("ROLE_GERENTE")) {
+                    return "/app/servicios.html";
+                }
+            }
+        }
+        return "/app/login.html";
+    }
+
 
 }

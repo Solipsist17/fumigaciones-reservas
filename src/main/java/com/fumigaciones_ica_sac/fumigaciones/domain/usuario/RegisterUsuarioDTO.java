@@ -9,5 +9,7 @@ public record RegisterUsuarioDTO(
         @NotBlank
         String clave,
         @NotNull
-        Boolean activo) {
+        Boolean activo,
+        @NotNull
+        Rol rol) {
 }

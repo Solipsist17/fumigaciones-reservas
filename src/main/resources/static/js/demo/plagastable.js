@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 async function cargarPlagas() {
     // llamada a la API
-    const request = await fetch('plagas', {
+    const request = await fetch('/plagas', {
         method: 'GET',
         headers: getHeaders()
     });
@@ -17,7 +17,7 @@ async function cargarPlagas() {
     // agregar los datos
     let plagasHTML = '';
     for (let plaga of plagas) {
-        let btnEditar = '<a href="../editarPlaga.html" onclick="cargarDatosPlaga('+plaga.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
+        let btnEditar = '<a href="../app/editarPlaga.html" onclick="cargarDatosPlaga('+plaga.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
         let btnEliminar = '<a href="#" onclick="eliminarPlaga('+plaga.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
         let plagaHTML = '<tr><td>'+plaga.id+'</td><td>'+plaga.nombre+'</td><td>'+plaga.activo+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
         plagasHTML += plagaHTML;

@@ -46,7 +46,7 @@ public class UsuarioController {
         System.out.println("Clave: " + rawPasssword);
         System.out.println("Clave hasheada: " + encodedPassword);
 
-        Usuario usuario = new Usuario(null, registerUsuarioDTO.nombre(), encodedPassword, registerUsuarioDTO.activo());
+        Usuario usuario = new Usuario(null, registerUsuarioDTO.nombre(), encodedPassword, registerUsuarioDTO.activo(), registerUsuarioDTO.rol());
         usuario = usuarioRepository.save(usuario);
 
         URI uri = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(usuario.getId()).toUri();

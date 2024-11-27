@@ -23,6 +23,15 @@ public class Cliente {
     @Column(name = "activo")
     private Boolean activo;
 
+    public Cliente(RegistrarClienteDTO dto) {
+        this.nombre = dto.nombre();
+        this.apellido = dto.apellido();
+        this.sexo = dto.sexo();
+        this.dni = dto.dni();
+        this.telefono = dto.telefono();
+        this.activo = dto.activo();
+    }
+
     public void actualizar(Cliente cliente) {
         if (cliente.getNombre() != null) {
             this.nombre = cliente.getNombre();

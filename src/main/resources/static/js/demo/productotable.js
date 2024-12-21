@@ -18,7 +18,7 @@ async function cargarProductos() {
     // agregar los datos
         let productosHTML = '';
         for (let producto of productos) {
-            let btnEditar = '<a href="../editarProducto.html" onclick="cargarDatosProducto('+producto.id+')" class="btn btn-warning"><i class="fa fa-pen"></i> Editar</a>';
+            let btnEditar = '<a onclick="mostrareditarProducto('+producto.id+')" class="btn btn-warning" data-toggle="modal" data-target="#editarModal"><i class="fa fa-pen" ></i> Editar</a>';
             let btnEliminar = '<a href="#" onclick="eliminarProducto('+producto.id+')" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</a>';
             let productoHTML = '<tr><td>'+producto.id+'</td><td>'+producto.nombre+'</td><td>'+producto.cantidad+'</td><td>'+producto.activo+'</td><td>'+producto.descripcion+'</td><td>'+btnEditar+'</td><td>'+btnEliminar+'</td></tr>';
             productosHTML += productoHTML;
@@ -30,25 +30,65 @@ async function cargarProductos() {
         // DOM Javascript
 }
 
-async function cargarDatosProducto(id){
+async function registrarProductos() {
 
-    //localStorage.setItem('idproducto', id);
-// llamada a la API
-        const request = await fetch('productos/' + id, {
-                    method: 'GET',
-                    headers: getHeaders()
+    let datos = {};
+    datos.nombre= document.getElementById('txtnombre').value;
+    datos.cantidad= document.getElementById('txtcantidad').value;
+    datos.activo= document.getElementById('txtactivo').value;
+    datos.descripcion= document.getElementById('txtdescripcion').value;
+
+    // llamada a la API
+        const request = await fetch('/productos', {
+            method: 'POST',
+            headers: getHeaders(),
+            body:JSON.stringify(datos)
         });
         const productos = await request.json();
 
         console.log(productos);
 
-        const collectionJSON = JSON.stringify(productos);
+    // agregar los datos
 
-        localStorage.setItem('productoC',collectionJSON);
 
-        console.log(localStorage.getItem('productoC'));
+    // agregar producto a la tabla
+    location.reload(true);
 }
 
+async function mostrareditarProducto(id) {
+
+ // llamada a la API
+         const request = await fetch('/productos/'+id, {
+             method: 'GET',
+             headers: getHeaders()
+         });
+   const producto = await request.json();
+
+   document.getElementById("txteditarid").value = producto.id;
+   document.getElementById("txteditarnombre").value = producto.nombre;
+   document.getElementById("txteditarcantidad").value = producto.cantidad;
+   document.getElementById("txteditaractivo").value = producto.activo;
+   document.getElementById("txteditardescripcion").value = producto.descripcion;
+}
+async function editarProducto(){
+
+    let datos = {};
+        datos.id = document.getElementById('txteditarid').value;
+        datos.nombre= document.getElementById('txteditarnombre').value;
+        datos.cantidad= document.getElementById('txteditarcantidad').value;
+        datos.activo= document.getElementById('txteditaractivo').value;
+        datos.descripcion =document.getElementById("txteditardescripcion").value;
+    // llamada a la API
+        const request = await fetch('/productos' , {
+            method: 'PUT',
+            headers: getHeaders(),
+            body:JSON.stringify(datos)
+        });
+         const productos = await request.json();
+
+        // console.log(productos);
+ $('#editarModal').modal('hide');
+}
 async function eliminarProducto(id) {
     if (!confirm('¿Desea eliminar la producto?')) {
         return;

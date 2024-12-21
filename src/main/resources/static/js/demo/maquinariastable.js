@@ -18,17 +18,10 @@ async function cargarMaquinarias() {
     // agregar los datos
         let maquinariasHTML = '';
         for (let maquinaria of maquinarias) {
-//<<<<<<< HEAD
-/*
-            let btnEditar = '<a href="../app/editarMaquinaria.html" onclick="cargarDatosMaquinaria('+maquinaria.id+')" class="btn btn-warning btn-circle"><i class="fa fa-pen"></i></a>';
-            let btnEliminar = '<a href="#" onclick="eliminarMaquinaria('+maquinaria.id+')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
-            let maquinariaHTML = '<tr><td>'+maquinaria.id+'</td><td>'+maquinaria.nombre+'</td><td>'+maquinaria.cantidad+'</td><td>'+maquinaria.activo+'</td><td>'+btnEditar+btnEliminar+'</td></tr>';
-*/
-//=======
-            let btnEditar = '<a href="../app/editarMaquinaria.html" onclick="cargarDatosMaquinaria('+maquinaria.id+')" class="btn btn-warning"><i class="fa fa-pen"></i> Editar</a>';
+            let btnEditar = '<a onclick="mostrareditarMaquinaria('+maquinaria.id+')" class="btn btn-warning" data-toggle="modal" data-target="#editarModal"><i class="fa fa-pen"></i> Editar</a>';
             let btnEliminar = '<a href="#" onclick="eliminarMaquinaria('+maquinaria.id+')" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</a>';
             let maquinariaHTML = '<tr><td>'+maquinaria.id+'</td><td>'+maquinaria.nombre+'</td><td>'+maquinaria.cantidad+'</td><td>'+maquinaria.activo+'</td><td>'+btnEditar+'</td><td>'+btnEliminar+'</td></tr>';
-//>>>>>>> 34b8e1f943f92c2fb652ded16604a6f5a6041821
+
             maquinariasHTML += maquinariaHTML;
         }
 
@@ -38,23 +31,61 @@ async function cargarMaquinarias() {
         // DOM Javascript
 }
 
-async function cargarDatosMaquinaria(id){
+async function registrarMaquinarias() {
 
-    //localStorage.setItem('idMaquinaria', id);
-// llamada a la API
-        const request = await fetch('maquinarias/' + id, {
-            method: 'GET',
-            headers: getHeaders()
+    let datos = {};
+    datos.nombre= document.getElementById('txtnombre').value;
+    datos.cantidad= document.getElementById('txtcantidad').value;
+    datos.activo= document.getElementById('txtactivo').value;
+
+    // llamada a la API
+        const request = await fetch('/maquinarias', {
+            method: 'POST',
+            headers: getHeaders(),
+            body:JSON.stringify(datos)
         });
         const maquinarias = await request.json();
 
         console.log(maquinarias);
+        $('#agregarModal').modal('hide');
 
-        const collectionJSON = JSON.stringify(maquinarias);
+        location.reload(true);
 
-        localStorage.setItem('maquinariaC',collectionJSON);
 
-        console.log(localStorage.getItem('maquinariaC'));
+}
+async function mostrareditarMaquinaria(id) {
+
+ // llamada a la API
+         const request = await fetch('/maquinarias/'+id, {
+             method: 'GET',
+             headers: getHeaders()
+         });
+   const maquinaria = await request.json();
+
+   document.getElementById("txteditarid").value = maquinaria.id;
+   document.getElementById("txteditarnombre").value = maquinaria.nombre;
+   document.getElementById("txteditarcantidad").value = maquinaria.cantidad;
+   document.getElementById("txteditaractivo").value = maquinaria.activo;
+
+}
+
+async function editarMaquinaria(){
+
+    let datos = {};
+        datos.id= document.getElementById('txteditarid').value;
+        datos.nombre= document.getElementById('txteditarnombre').value;
+        datos.cantidad= document.getElementById('txteditarcantidad').value;
+        datos.activo= document.getElementById('txteditaractivo').value;
+    // llamada a la API
+        const request = await fetch('/maquinarias' , {
+            method: 'PUT',
+            headers: getHeaders(),
+            body:JSON.stringify(datos)
+        });
+         const maquinarias = await request.json();
+
+         //console.log(maquinarias);
+         $('#editarModal').modal('hide');
 }
 
 async function eliminarMaquinaria(id) {
@@ -63,13 +94,14 @@ async function eliminarMaquinaria(id) {
     }
 
     // llamada a la API
-    const request = await fetch('maquinarias/' + id, {
+    const request = await fetch('/maquinarias/' + id, {
         method: 'DELETE',
         headers: getHeaders()
     });
 
     //location.reload(); // recargar la página
     cargarMaquinarias(); // cargar datos
+    location.reload(true);
 }
 
 // Enviar el token en cada request

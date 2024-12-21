@@ -18,7 +18,7 @@
             rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -190,78 +190,14 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <!-- Modal Registrar -->
-                <div class="modal fade modal-Registrar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="myLargeModalLabel">Agregar</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="txtnombre"  class="col-form-label">Plaga :</label>
-                                        <input type="text"  class="form-control" id="txtnombre" onclick="verificarInputsAgregar()">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtactivo" class="col-form-label">Activo:</label>
-                                        <select id="txtactivo" name="activo" class="form-control" onchange="verificarInputsAgregar()">
-                                            <option value="true">Sí</option>
-                                            <option value="false">No</option>
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
-                                <button type="button" class="btn btn-primary" id="botonAgregar" onclick="registrarPlagas()" disabled><i class="fas fa-check"></i> Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Modal -->
-                <!-- Modal Editar -->
-                <div class="modal fade modal-Editar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Editar</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <input type="hidden" id="txtid">
-                                    <div class="form-group">
-                                        <label for="txteditarnombre"  class="col-form-label">Plaga :</label>
-                                        <input type="text"  class="form-control" id="txteditarnombre" oninput="verificarInputsEditar()">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txteditaractivo" class="col-form-label">Activo:</label>
-                                        <select id="txteditaractivo" name="activo" class="form-control" onchange="verificarInputsEditar()">
-                                            <option value="true">Sí</option>
-                                            <option value="false">No</option>
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="botonEditar" onclick="editarPlaga()" disabled><i class="fas fa-check"></i> Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Modal -->
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Gestión de Plagas</h1>
                 <br>
                 <p class="mb-4">Aquí podrá ver la lista de todos las maquinas y realizar las acciones correspondientes.</p>
 
                 <br>
-                <p class="mb-4"><a href="#" class="btn btn-success btn-lng" data-toggle="modal" data-target=".modal-Registrar">
+                <p class="mb-4"><a href="#" class="btn btn-success btn-lng" data-toggle="modal" data-target="#agregarModal">
                     <i class="fas fa-plus"></i> Agregar</a></p>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -328,28 +264,96 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a onclick="logout()" class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Agregar Modal-->
+<div class="modal fade" id="agregarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h5 class="modal-title">Agregar Plaga</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="nombre" placeholder="Nombre de plaga" class="form-control form-control-user">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" id="txtcantidad" name="cantidad" min="0" placeholder="Cantidad" class="form-control form-control-user" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="txtactivo" name="activo" class="form-control form-control-sm">
+                            <option value="" disabled selected>Seleccione una opción...</option>
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a onclick="logout()" class="btn btn-primary" href="login.html">Logout</a>
+                <a onclick="registrarPlagas()" class="btn btn-primary" href="#">Agregar</a>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Editar modal -->
+<div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Plaga</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="txteditarid">
+                    <div class="form-group">
+                        <input type="text" id="txteditarnombre" name="nombre" placeholder="Nombre de maquinaria" class="form-control form-control-user">
+                    </div>
 
-
-
+                    <div class="form-group">
+                        <select id="txteditaractivo" name="activo" class="form-control form-control-sm">
+                            <option value="" disabled selected>Seleccione una opción...</option>
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a onclick="editarPlaga()" class="btn btn-primary" href="#">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Validar token -->
 <!-- <script src="../js/validar-token.js"></script> -->
 

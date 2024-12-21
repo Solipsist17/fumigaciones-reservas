@@ -5,19 +5,19 @@ $(document).ready(function() {
 
 
 
- async function mostrarEditarMaquinaria() {
+ async function mostrarEditarMaquinaria(id) {
 
-    let valor = localStorage.getItem('maquinariaC');
+ // llamada a la API
+         const request = await fetch('maquinarias/'+id, {
+             method: 'GET',
+             headers: getHeaders()
+         });
+   const maquinaria = await request.json();
 
-    let coleccion = JSON.parse(valor);
-    const nombre = localStorage.nombre;
-    console.log(coleccion.id);
+   document.getElementById("txteditarnombre").value = maquinaria.nombre;
+   document.getElementById("txteditarcantidad").value = maquinaria.cantidad;
+   document.getElementById("txteditaractivo").value = maquinaria.activo;
 
-    document.getElementById("txtid").value = coleccion.id;
-    document.getElementById("txtnombre").value = coleccion.nombre;
-    document.getElementById("txtcantidad").value = coleccion.cantidad;
-    document.getElementById("txtactivo").value = coleccion.activo;
-    document.querySelector('#nombreUsuario').outerHTML = nombre;
 }
 
 async function editarMaquinaria(){

@@ -12,7 +12,7 @@ async function registrarMaquinarias() {
     datos.activo= document.getElementById('txtactivo').value;
 
     // llamada a la API
-        const request = await fetch('maquinarias', {
+        const request = await fetch('/maquinarias', {
             method: 'POST',
             headers: getHeaders(),
             body:JSON.stringify(datos)
